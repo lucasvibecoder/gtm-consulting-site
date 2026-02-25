@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucas Linares — GTM Engineering Consulting</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bg: '#080a11',
+                            surface: '#0f1219',
+                            'surface-hover': '#161b25',
+                            border: '#1c2133',
+                            'border-light': '#252d42',
+                            accent: '#00e5bf',
+                            'accent-hover': '#00ffd0',
+                            'accent-dim': 'rgba(0, 229, 191, 0.06)',
+                            'accent-glow': 'rgba(0, 229, 191, 0.12)',
+                            text: '#e8eaf0',
+                            muted: '#858ea3',
+                            faint: '#4a5268',
+                        }
+                    },
+                    fontFamily: {
+                        display: ['Syne', 'sans-serif'],
+                        body: ['Outfit', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Accent top bar */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00e5bf, transparent);
+            z-index: 100;
+        }
+
+        /* Subtle dot grid texture */
+        .dot-grid {
+            background-image: radial-gradient(circle, rgba(28, 33, 51, 0.5) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+
+        /* Grain overlay */
+        .grain::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+            opacity: 0.018;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* Scroll reveal animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger children */
+        .stagger > .reveal:nth-child(1) { transition-delay: 0s; }
+        .stagger > .reveal:nth-child(2) { transition-delay: 0.12s; }
+        .stagger > .reveal:nth-child(3) { transition-delay: 0.24s; }
+        .stagger > .reveal:nth-child(4) { transition-delay: 0.36s; }
+
+        /* Nav scroll state */
+        nav {
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        nav.scrolled {
+            background-color: rgba(8, 10, 17, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom-color: rgba(28, 33, 51, 0.6);
+        }
+
+        /* Accent glow on hover for cards */
+        .card-glow {
+            position: relative;
+            transition: border-color 0.3s ease, transform 0.3s ease;
+        }
+        .card-glow:hover {
+            border-color: rgba(0, 229, 191, 0.25);
+            transform: translateY(-2px);
+        }
+
+        /* CTA button glow */
+        .btn-glow {
+            box-shadow: 0 0 0 0 rgba(0, 229, 191, 0);
+            transition: all 0.3s ease;
+        }
+        .btn-glow:hover {
+            box-shadow: 0 0 24px rgba(0, 229, 191, 0.2);
+        }
+
+        /* Pricing card highlight */
+        .pricing-highlight {
+            border-color: rgba(0, 229, 191, 0.3);
+            background: linear-gradient(180deg, rgba(0, 229, 191, 0.04) 0%, rgba(15, 18, 25, 1) 40%);
+        }
+
+        /* Horizontal rule accent */
+        .rule-accent {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0, 229, 191, 0.2), transparent);
+        }
+
+        /* Stat number styling */
+        .stat-num {
+            background: linear-gradient(180deg, #00e5bf, #00b899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Hero headline accent */
+        .headline-accent {
+            color: #00e5bf;
+            text-shadow: 0 0 40px rgba(0, 229, 191, 0.15);
+        }
+
+        /* Feature check */
+        .check::before {
+            content: '—';
+            color: #00e5bf;
+            margin-right: 0.75rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body class="bg-brand-bg text-brand-text font-body antialiased dot-grid grain">
+
+    <!-- Background ambient glow -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0" aria-hidden="true">
+        <div class="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full opacity-100" style="background: radial-gradient(circle, rgba(0,229,191,0.04) 0%, transparent 70%);"></div>
+        <div class="absolute top-1/3 -left-60 w-[500px] h-[500px] rounded-full opacity-100" style="background: radial-gradient(circle, rgba(0,229,191,0.025) 0%, transparent 70%);"></div>
+        <div class="absolute bottom-0 right-1/4 w-[400px] h-[400px] rounded-full opacity-100" style="background: radial-gradient(circle, rgba(0,229,191,0.03) 0%, transparent 70%);"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 border-b border-transparent">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="#" class="font-display font-bold text-sm tracking-[0.2em] text-brand-text hover:text-brand-accent transition-colors">
+                LUCAS LINARES
+            </a>
+            <a href="#pricing" class="hidden sm:inline-block text-sm font-body font-medium text-brand-muted hover:text-brand-accent transition-colors mr-6">
+                Pricing
+            </a>
+            <a href="#" class="text-sm font-body font-semibold bg-brand-accent text-brand-bg px-5 py-2.5 rounded-lg hover:bg-brand-accent-hover btn-glow transition-all">
+                Book a Call
+            </a>
+        </div>
+    </nav>
+
+    <main class="relative z-10">
+
+        <!-- ===================== HERO ===================== -->
+        <section class="min-h-screen flex items-center justify-center px-6 pt-20">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="reveal">
+                    <p class="font-display text-xs tracking-[0.3em] text-brand-accent uppercase mb-8">GTM Engineering</p>
+                </div>
+                <h1 class="reveal font-display font-800 text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight mb-8">
+                    You Bought Clay.<br class="hidden sm:block">
+                    You Burned Credits.<br class="hidden sm:block">
+                    <span class="headline-accent">You Still Don't Have Pipeline.</span>
+                </h1>
+                <p class="reveal font-body text-lg sm:text-xl text-brand-muted max-w-2xl mx-auto mb-12 leading-relaxed font-light">
+                    I fix that. Ex-Clay Labs GTM Engineer. I build Clay&#8209;powered outbound systems and hand you the keys.
+                </p>
+                <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="#scorecard" class="w-full sm:w-auto text-center font-body font-semibold bg-brand-accent text-brand-bg px-8 py-4 rounded-lg hover:bg-brand-accent-hover btn-glow transition-all text-base">
+                        Take the Free GTM Scorecard
+                    </a>
+                    <a href="#" class="w-full sm:w-auto text-center font-body font-medium border border-brand-border text-brand-text px-8 py-4 rounded-lg hover:border-brand-accent hover:text-brand-accent transition-all text-base">
+                        Book a Strategy Call
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== PROBLEM ===================== -->
+        <section class="py-24 sm:py-32 px-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="reveal">
+                    <p class="font-display text-xs tracking-[0.3em] text-brand-accent uppercase mb-4">The Problem</p>
+                    <h2 class="font-display font-bold text-3xl sm:text-4xl tracking-tight mb-16 max-w-2xl">
+                        The gap between buying Clay and getting pipeline is where most companies get stuck.
+                    </h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 stagger">
+                    <div class="reveal bg-brand-surface border border-brand-border rounded-xl p-8 card-glow">
+                        <p class="stat-num font-display font-800 text-5xl sm:text-6xl mb-3">42%</p>
+                        <p class="text-brand-muted text-base leading-relaxed">of Clay users burn through credits while learning the platform.</p>
+                    </div>
+                    <div class="reveal bg-brand-surface border border-brand-border rounded-xl p-8 card-glow">
+                        <p class="stat-num font-display font-800 text-5xl sm:text-6xl mb-3">28%</p>
+                        <p class="text-brand-muted text-base leading-relaxed">cite the learning curve as their single biggest complaint.</p>
+                    </div>
+                    <div class="reveal bg-brand-surface border border-brand-border rounded-xl p-8 card-glow">
+                        <p class="stat-num font-display font-800 text-5xl sm:text-6xl mb-3">0</p>
+                        <p class="text-brand-muted text-base leading-relaxed">meetings booked from a Clay table that nobody knows how to run.</p>
+                    </div>
+                </div>
+                <div class="reveal">
+                    <p class="text-brand-muted text-lg max-w-2xl font-light leading-relaxed">
+                        You don't want to become a Clay expert. You want meetings on the calendar.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="rule-accent max-w-6xl mx-auto"></div>
+
+        <!-- ===================== WHAT I DO ===================== -->
+        <section class="py-24 sm:py-32 px-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="reveal">
+                    <p class="font-display text-xs tracking-[0.3em] text-brand-accent uppercase mb-4">What I Do</p>
+                    <h2 class="font-display font-bold text-3xl sm:text-4xl tracking-tight mb-8 max-w-2xl">
+                        Clay-powered outbound, built to run without me.
+                    </h2>
+                </div>
+                <div class="reveal max-w-3xl">
+                    <p class="text-brand-muted text-lg leading-relaxed mb-8 font-light">
+                        I build Clay-powered outbound systems for Series A/B SaaS companies. Signal detection, enrichment pipelines, AI qualification, personalized sequencing — all integrated with your CRM.
+                    </p>
+                    <p class="text-brand-muted text-lg leading-relaxed font-light">
+                        Then I document everything and teach your team to run it without me.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="rule-accent max-w-6xl mx-auto"></div>
+
+        <!-- ===================== HOW I'M DIFFERENT ===================== -->
+        <section class="py-24 sm:py-32 px-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="reveal mb-16">
+                    <p class="font-display text-xs tracking-[0.3em] text-brand-accent uppercase mb-4">Why Me</p>
+                    <h2 class="font-display font-bold text-3xl sm:text-4xl tracking-tight max-w-2xl">
+                        Not another Clay consultant.
+                    </h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 stagger">
+                    <div class="reveal bg-brand-surface border border-brand-border rounded-xl p-8 card-glow">
+                        <p class="font-display font-bold text-xl mb-4 text-brand-text">"I've Been the Rep"</p>
+                        <p class="text-brand-muted leading-relaxed">
+                            4+ years as SDR and AE before I ever built a Clay table. I build systems that work for the people who actually have to use them.
+                        </p>
+                    </div>
+                    <div class="reveal bg-brand-surface border border-brand-border rounded-xl p-8 card-glow">
+                        <p class="font-display font-bold text-xl mb-4 text-brand-text">"Ex-Clay Labs"</p>
+                        <p class="text-brand-muted leading-relaxed">
+                            9 months inside Clay Labs working with the platform daily. I know where it breaks and how to make it work.
+                        </p>
+                    </div>
+                    <div class="reveal bg-brand-surface border border-brand-border rounded-xl p-8 card-glow">
+                        <p class="font-display font-bold text-xl mb-4 text-brand-text">"You Own Everything"</p>
+                        <p class="text-brand-muted leading-relaxed">
+                            Full documentation, annotated workflows, Loom walkthroughs. When the engagement ends, the system stays. No black boxes, no dependency.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="rule-accent max-w-6xl mx-auto"></div>
+
+        <!-- ===================== PRICING ===================== -->
+        <section id="pricing" class="py-24 sm:py-32 px-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="reveal mb-16">
+                    <p class="font-display text-xs tracking-[0.3em] text-brand-accent uppercase mb-4">Engagements</p>
+                    <h2 class="font-display font-bold text-3xl sm:text-4xl tracking-tight max-w-2xl">
+                        Three ways to work together.
+                    </h2>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 stagger">
+
+                    <!-- Pipeline Sprint -->
+                    <div class="reveal bg-brand-surface border border-brand-border rounded-xl p-8 flex flex-col card-glow">
+                        <p class="font-display font-bold text-xl mb-1 text-brand-text">Pipeline Sprint</p>
+                        <p class="font-display font-800 text-3xl text-brand-text mb-1">$4,000</p>
+                        <p class="text-brand-faint text-sm mb-6">One-time engagement</p>
+                        <p class="text-brand-muted text-sm mb-8 leading-relaxed">For teams that need a working system fast.</p>
+                        <ul class="space-y-3 text-sm text-brand-muted mb-10 flex-grow">
+                            <li class="check">2-week engagement</li>
+                            <li class="check">Full Clay audit or net-new build</li>
+                            <li class="check">One enrichment pipeline, end-to-end</li>
+                            <li class="check">One outbound play activated</li>
+                            <li class="check">CRM integration configured</li>
+                            <li class="check">Full documentation + Loom walkthroughs</li>
+                        </ul>
+                        <a href="#" class="block text-center font-body font-semibold border border-brand-border text-brand-text px-6 py-3.5 rounded-lg hover:border-brand-accent hover:text-brand-accent transition-all text-sm">
+                            Book a Call
+                        </a>
+                    </div>
+
+                    <!-- Pipeline Engine (highlighted) -->
+                    <div class="reveal bg-brand-surface border border-brand-border rounded-xl p-8 flex flex-col pricing-highlight relative card-glow">
+                        <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand-accent text-brand-bg text-[11px] font-display font-bold px-4 py-1 rounded-full tracking-wider uppercase">Popular</span>
+                        <p class="font-display font-bold text-xl mb-1 text-brand-text">Pipeline Engine</p>
+                        <p class="font-display font-800 text-3xl text-brand-text mb-1">$6,000<span class="text-lg font-medium text-brand-muted">/mo</span></p>
+                        <p class="text-brand-faint text-sm mb-6">3-month engagement</p>
+                        <p class="text-brand-muted text-sm mb-8 leading-relaxed">For teams ready to systematize outbound.</p>
+                        <ul class="space-y-3 text-sm text-brand-muted mb-10 flex-grow">
+                            <li class="check">Deep ICP analysis and signal architecture</li>
+                            <li class="check">3–5 outbound plays built and activated</li>
+                            <li class="check">AI qualification and personalization systems</li>
+                            <li class="check">CRM integration with dedup and routing</li>
+                            <li class="check">Team training + full knowledge transfer</li>
+                            <li class="check">Month-to-month after initial 3 months</li>
+                        </ul>
+                        <a href="#" class="block text-center font-body font-semibold bg-brand-accent text-brand-bg px-6 py-3.5 rounded-lg hover:bg-brand-accent-hover btn-glow transition-all text-sm">
+                            Book a Call
+                        </a>
+                    </div>
+
+                    <!-- Signal Architect -->
+                    <div class="reveal bg-brand-surface border border-brand-border rounded-xl p-8 flex flex-col card-glow">
+                        <p class="font-display font-bold text-xl mb-1 text-brand-text">Signal Architect</p>
+                        <p class="font-display font-800 text-3xl text-brand-text mb-1">$10,000<span class="text-lg font-medium text-brand-muted">/mo</span></p>
+                        <p class="text-brand-faint text-sm mb-6">3-month minimum</p>
+                        <p class="text-brand-muted text-sm mb-8 leading-relaxed">For teams that want competitive advantage.</p>
+                        <ul class="space-y-3 text-sm text-brand-muted mb-10 flex-grow">
+                            <li class="check">Everything in Pipeline Engine, plus:</li>
+                            <li class="check">Custom signal detection systems</li>
+                            <li class="check">Multi-channel orchestration</li>
+                            <li class="check">Advanced AI agent systems</li>
+                            <li class="check">Weekly strategy sessions</li>
+                        </ul>
+                        <a href="#" class="block text-center font-body font-semibold border border-brand-border text-brand-text px-6 py-3.5 rounded-lg hover:border-brand-accent hover:text-brand-accent transition-all text-sm">
+                            Book a Call
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <div class="rule-accent max-w-6xl mx-auto"></div>
+
+        <!-- ===================== CREDIBILITY ===================== -->
+        <section class="py-24 sm:py-32 px-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="reveal mb-12">
+                    <p class="font-display text-xs tracking-[0.3em] text-brand-accent uppercase mb-4">Background</p>
+                    <h2 class="font-display font-bold text-3xl sm:text-4xl tracking-tight max-w-2xl">
+                        The short version.
+                    </h2>
+                </div>
+                <div class="reveal flex flex-wrap gap-3">
+                    <span class="inline-block bg-brand-surface border border-brand-border rounded-lg px-5 py-3 text-sm text-brand-text font-medium">
+                        Ex-Clay Labs GTM Engineer
+                    </span>
+                    <span class="inline-block bg-brand-surface border border-brand-border rounded-lg px-5 py-3 text-sm text-brand-muted">
+                        4+ years B2B SaaS sales
+                    </span>
+                    <span class="inline-block bg-brand-surface border border-brand-border rounded-lg px-5 py-3 text-sm text-brand-muted">
+                        Tonic.ai
+                    </span>
+                    <span class="inline-block bg-brand-surface border border-brand-border rounded-lg px-5 py-3 text-sm text-brand-muted">
+                        Rutter
+                    </span>
+                    <span class="inline-block bg-brand-surface border border-brand-border rounded-lg px-5 py-3 text-sm text-brand-muted">
+                        Clay Labs
+                    </span>
+                </div>
+                <div class="reveal flex flex-wrap gap-3 mt-4">
+                    <span class="inline-block bg-brand-accent-dim border border-brand-border rounded-lg px-5 py-3 text-sm text-brand-accent">
+                        Clay
+                    </span>
+                    <span class="inline-block bg-brand-accent-dim border border-brand-border rounded-lg px-5 py-3 text-sm text-brand-accent">
+                        Salesforce
+                    </span>
+                    <span class="inline-block bg-brand-accent-dim border border-brand-border rounded-lg px-5 py-3 text-sm text-brand-accent">
+                        HubSpot
+                    </span>
+                    <span class="inline-block bg-brand-accent-dim border border-brand-border rounded-lg px-5 py-3 text-sm text-brand-accent">
+                        Prompt Engineering
+                    </span>
+                    <span class="inline-block bg-brand-accent-dim border border-brand-border rounded-lg px-5 py-3 text-sm text-brand-accent">
+                        Signal-Based GTM
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <div class="rule-accent max-w-6xl mx-auto"></div>
+
+        <!-- ===================== SCORECARD CTA ===================== -->
+        <section id="scorecard" class="py-24 sm:py-32 px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="reveal bg-brand-surface border border-brand-border rounded-2xl p-10 sm:p-16 relative overflow-hidden">
+                    <!-- Subtle corner glow -->
+                    <div class="absolute top-0 right-0 w-64 h-64 rounded-full opacity-100 pointer-events-none" style="background: radial-gradient(circle, rgba(0,229,191,0.06) 0%, transparent 70%);"></div>
+
+                    <p class="font-display text-xs tracking-[0.3em] text-brand-accent uppercase mb-4 relative">Free Tool</p>
+                    <h2 class="font-display font-bold text-2xl sm:text-3xl md:text-4xl tracking-tight mb-6 relative">
+                        Not ready to talk?<br>Take the free GTM Infrastructure Scorecard.
+                    </h2>
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-6 text-brand-muted text-sm mb-10 relative">
+                        <span class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-brand-accent inline-block"></span>
+                            5 minutes, immediate results
+                        </span>
+                        <span class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-brand-accent inline-block"></span>
+                            6 dimensions scored
+                        </span>
+                        <span class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-brand-accent inline-block"></span>
+                            Personalized recommendations
+                        </span>
+                    </div>
+                    <a href="#scorecard" class="relative inline-block font-body font-semibold bg-brand-accent text-brand-bg px-10 py-4 rounded-lg hover:bg-brand-accent-hover btn-glow transition-all text-base">
+                        Take the Scorecard
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="border-t border-brand-border px-6 py-12 relative z-10">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div class="flex flex-col sm:flex-row items-center gap-4">
+                <span class="font-display font-bold text-sm tracking-[0.15em] text-brand-text">LUCAS LINARES</span>
+                <span class="hidden sm:inline text-brand-faint">·</span>
+                <a href="mailto:lucas@placeholder.com" class="text-sm text-brand-muted hover:text-brand-accent transition-colors">
+                    lucas@placeholder.com
+                </a>
+                <span class="hidden sm:inline text-brand-faint">·</span>
+                <a href="#" class="text-sm text-brand-muted hover:text-brand-accent transition-colors">
+                    LinkedIn
+                </a>
+            </div>
+            <p class="text-xs text-brand-faint">&copy; 2026 Lucas Linares. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- ===================== SCRIPTS ===================== -->
+    <script>
+        // Scroll reveal with Intersection Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.08,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Nav scroll behavior
+        const nav = document.querySelector('nav');
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    if (window.scrollY > 60) {
+                        nav.classList.add('scrolled');
+                    } else {
+                        nav.classList.remove('scrolled');
+                    }
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+    </script>
+
+</body>
+</html>
