@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lucas Linares — GTM Engineering Consulting</title>
+    <title>Vantage — Signal-Based Outbound for Niche B2B</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Syne:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
@@ -17,18 +17,17 @@
                 extend: {
                     colors: {
                         brand: {
-                            bg: '#080a11',
-                            surface: '#0f1219',
-                            'surface-hover': '#161b25',
-                            border: '#1c2133',
-                            'border-light': '#252d42',
-                            accent: '#00e5bf',
-                            'accent-hover': '#00ffd0',
-                            'accent-dim': 'rgba(0, 229, 191, 0.06)',
-                            'accent-glow': 'rgba(0, 229, 191, 0.12)',
-                            text: '#e8eaf0',
-                            muted: '#858ea3',
-                            faint: '#4a5268',
+                            bg: '#0A0A0A',
+                            surface: '#141414',
+                            'surface-alt': '#1A1A1A',
+                            border: '#242424',
+                            'border-hover': '#D4622B',
+                            accent: '#D4622B',
+                            'accent-hover': '#E87040',
+                            'accent-light': 'rgba(212, 98, 43, 0.10)',
+                            text: '#E8E6E1',
+                            muted: '#8A8880',
+                            faint: '#4A4A45',
                         }
                     },
                     fontFamily: {
@@ -41,35 +40,6 @@
     </script>
 
     <style>
-        /* Accent top bar */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #00e5bf, transparent);
-            z-index: 100;
-        }
-
-        /* Subtle dot grid texture */
-        .dot-grid {
-            background-image: radial-gradient(circle, rgba(28, 33, 51, 0.5) 1px, transparent 1px);
-            background-size: 32px 32px;
-        }
-
-        /* Grain overlay */
-        .grain::after {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-            opacity: 0.018;
-            pointer-events: none;
-            z-index: 9999;
-        }
-
         /* Scroll reveal animations */
         .reveal {
             opacity: 0;
@@ -90,78 +60,128 @@
 
         /* Nav scroll state */
         nav {
-            transition: background-color 0.3s ease, border-color 0.3s ease;
+            transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
         nav.scrolled {
-            background-color: rgba(8, 10, 17, 0.85);
+            background-color: rgba(10, 10, 10, 0.92);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border-bottom-color: rgba(28, 33, 51, 0.6);
+            box-shadow: 0 1px 0 0 #1E1E1E;
         }
 
-        /* Accent glow on hover for cards */
-        .card-glow {
-            position: relative;
-            transition: border-color 0.3s ease, transform 0.3s ease;
+        /* Card hover */
+        .card-lift {
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
         }
-        .card-glow:hover {
-            border-color: rgba(0, 229, 191, 0.25);
+        .card-lift:hover {
+            border-color: #D4622B;
+            box-shadow: 0 4px 24px rgba(212, 98, 43, 0.08);
             transform: translateY(-2px);
         }
 
-        /* CTA button glow */
-        .btn-glow {
-            box-shadow: 0 0 0 0 rgba(0, 229, 191, 0);
+        /* CTA button */
+        .btn-primary {
             transition: all 0.3s ease;
         }
-        .btn-glow:hover {
-            box-shadow: 0 0 24px rgba(0, 229, 191, 0.2);
+        .btn-primary:hover {
+            box-shadow: 0 4px 20px rgba(212, 98, 43, 0.25);
         }
 
-        /* Pricing card highlight */
-        .pricing-highlight {
-            border-color: rgba(0, 229, 191, 0.3);
-            background: linear-gradient(180deg, rgba(0, 229, 191, 0.04) 0%, rgba(15, 18, 25, 1) 40%);
-        }
-
-        /* Horizontal rule accent */
-        .rule-accent {
+        /* Divider */
+        .divider {
             height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(0, 229, 191, 0.2), transparent);
+            background: #1E1E1E;
         }
 
-        /* Stat number styling */
-        .stat-num {
-            background: linear-gradient(180deg, #00e5bf, #00b899);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* Hero headline accent */
+        /* Headline accent */
         .headline-accent {
-            color: #00e5bf;
-            text-shadow: 0 0 40px rgba(0, 229, 191, 0.15);
+            color: #D4622B;
         }
 
-        /* Feature check */
-        .check::before {
-            content: '—';
-            color: #00e5bf;
-            margin-right: 0.75rem;
-            font-weight: 600;
+        /* ═══ TERMINAL ═══ */
+        .terminal {
+            font-family: 'JetBrains Mono', monospace;
+            background: #111111;
+            border: 1px solid #242424;
+            border-radius: 12px;
+            overflow: hidden;
         }
+        .terminal-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 16px;
+            background: #181818;
+            border-bottom: 1px solid #242424;
+        }
+        .terminal-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        .terminal-dot:nth-child(1) { background: #E54D42; opacity: 0.8; }
+        .terminal-dot:nth-child(2) { background: #E8B44D; opacity: 0.8; }
+        .terminal-dot:nth-child(3) { background: #5CB85C; opacity: 0.8; }
+        .terminal-title {
+            font-size: 11px;
+            color: #4A4A45;
+            letter-spacing: 0.05em;
+            margin-left: 8px;
+        }
+        .terminal-body {
+            padding: 20px 24px;
+            font-size: 13px;
+            line-height: 1.7;
+            min-height: 420px;
+        }
+        @media (min-width: 640px) {
+            .terminal-body { font-size: 13.5px; padding: 24px 28px; }
+        }
+        .term-line {
+            opacity: 0;
+            transform: translateY(2px);
+            white-space: pre;
+            overflow-x: auto;
+        }
+        .term-line.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.15s ease, transform 0.15s ease;
+        }
+        .term-cmd { color: #E8E8E4; }
+        .term-flag { color: #D4622B; }
+        .term-string { color: #E8B44D; }
+        .term-phase { color: #D4622B; font-weight: 700; }
+        .term-dim { color: #3D3D38; }
+        .term-label { color: #8A8880; }
+        .term-value { color: #E8E8E4; }
+        .term-pass { color: #5CB85C; }
+        .term-fail { color: #E54D42; }
+        .term-bar-fill {
+            display: inline-block;
+            color: #D4622B;
+            opacity: 0;
+            transition: opacity 0.2s ease 0.1s;
+        }
+        .term-line.visible .term-bar-fill { opacity: 1; }
+        .term-bar-low { color: #E54D42; }
+        .term-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 16px;
+            background: #D4622B;
+            margin-left: 2px;
+            vertical-align: text-bottom;
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+        .term-prompt { color: #D4622B; }
     </style>
 </head>
 
-<body class="bg-brand-bg text-brand-text font-body antialiased dot-grid grain">
-
-    <!-- Background ambient glow -->
-    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0" aria-hidden="true">
-        <div class="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full opacity-100" style="background: radial-gradient(circle, rgba(0,229,191,0.04) 0%, transparent 70%);"></div>
-        <div class="absolute top-1/3 -left-60 w-[500px] h-[500px] rounded-full opacity-100" style="background: radial-gradient(circle, rgba(0,229,191,0.025) 0%, transparent 70%);"></div>
-        <div class="absolute bottom-0 right-1/4 w-[400px] h-[400px] rounded-full opacity-100" style="background: radial-gradient(circle, rgba(0,229,191,0.03) 0%, transparent 70%);"></div>
-    </div>
+<body class="bg-brand-bg text-brand-text font-body antialiased">
 
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50 border-b border-transparent">
@@ -169,10 +189,7 @@
             <a href="#" class="font-display font-bold text-sm tracking-[0.2em] text-brand-text hover:text-brand-accent transition-colors">
                 LUCAS LINARES
             </a>
-            <a href="#pricing" class="hidden sm:inline-block text-sm font-body font-medium text-brand-muted hover:text-brand-accent transition-colors mr-6">
-                Pricing
-            </a>
-            <a href="#" class="text-sm font-body font-semibold bg-brand-accent text-brand-bg px-5 py-2.5 rounded-lg hover:bg-brand-accent-hover btn-glow transition-all">
+            <a href="https://cal.com/lucas-gfxkfd/30min" class="text-sm font-body font-semibold bg-brand-accent text-white px-5 py-2.5 rounded-lg hover:bg-brand-accent-hover btn-primary transition-all">
                 Book a Call
             </a>
         </div>
@@ -184,265 +201,163 @@
         <section class="min-h-screen flex items-center justify-center px-6 pt-20">
             <div class="max-w-4xl mx-auto text-center">
                 <div class="reveal">
-                    <p class="font-display text-xs tracking-[0.3em] text-brand-accent uppercase mb-8">GTM Engineering</p>
+                    <p class="font-display text-xs tracking-[0.3em] text-brand-accent uppercase mb-8">Vantage</p>
                 </div>
                 <h1 class="reveal font-display font-800 text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight mb-8">
-                    You Bought Clay.<br class="hidden sm:block">
-                    You Burned Credits.<br class="hidden sm:block">
-                    <span class="headline-accent">You Still Don't Have Pipeline.</span>
+                    Signal-based outbound<br class="hidden sm:block">
+                    <span class="headline-accent">for markets where volume doesn't work.</span>
                 </h1>
                 <p class="reveal font-body text-lg sm:text-xl text-brand-muted max-w-2xl mx-auto mb-12 leading-relaxed font-light">
-                    I fix that. Ex-Clay Labs GTM Engineer. I build Clay&#8209;powered outbound systems and hand you the keys.
+                    Vantage is an intelligence system that researches your market, scores buying signals, and produces outbound plays your team can run this week.
                 </p>
                 <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <a href="#scorecard" class="w-full sm:w-auto text-center font-body font-semibold bg-brand-accent text-brand-bg px-8 py-4 rounded-lg hover:bg-brand-accent-hover btn-glow transition-all text-base">
-                        Take the Free GTM Scorecard
-                    </a>
-                    <a href="#" class="w-full sm:w-auto text-center font-body font-medium border border-brand-border text-brand-text px-8 py-4 rounded-lg hover:border-brand-accent hover:text-brand-accent transition-all text-base">
-                        Book a Strategy Call
+                    <a href="https://cal.com/lucas-gfxkfd/30min" class="w-full sm:w-auto text-center font-body font-semibold bg-brand-accent text-white px-8 py-4 rounded-lg hover:bg-brand-accent-hover btn-primary transition-all text-base">
+                        Book a Diagnostic Call
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- ===================== PROBLEM ===================== -->
+        <!-- ===================== THE SYSTEM ===================== -->
         <section class="py-24 sm:py-32 px-6">
             <div class="max-w-6xl mx-auto">
                 <div class="reveal">
-                    <p class="font-display text-xs tracking-[0.3em] text-brand-accent uppercase mb-4">The Problem</p>
+                    <p class="font-display text-xs tracking-[0.3em] text-brand-accent uppercase mb-4">The System</p>
                     <h2 class="font-display font-bold text-3xl sm:text-4xl tracking-tight mb-16 max-w-2xl">
-                        The gap between buying Clay and getting pipeline is where most companies get stuck.
+                        From raw market data to outreach ready to send.
                     </h2>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 stagger">
-                    <div class="reveal bg-brand-surface border border-brand-border rounded-xl p-8 card-glow">
-                        <p class="stat-num font-display font-800 text-5xl sm:text-6xl mb-3">42%</p>
-                        <p class="text-brand-muted text-base leading-relaxed">of Clay users burn through credits while learning the platform.</p>
+                <div class="reveal relative max-w-3xl mx-auto">
+                    <div class="terminal" id="pipeline-terminal">
+                        <div class="terminal-bar">
+                            <span class="terminal-dot"></span>
+                            <span class="terminal-dot"></span>
+                            <span class="terminal-dot"></span>
+                            <span class="terminal-title">vantage</span>
+                        </div>
+                        <div class="terminal-body" id="terminal-output">
+                        </div>
                     </div>
-                    <div class="reveal bg-brand-surface border border-brand-border rounded-xl p-8 card-glow">
-                        <p class="stat-num font-display font-800 text-5xl sm:text-6xl mb-3">28%</p>
-                        <p class="text-brand-muted text-base leading-relaxed">cite the learning curve as their single biggest complaint.</p>
-                    </div>
-                    <div class="reveal bg-brand-surface border border-brand-border rounded-xl p-8 card-glow">
-                        <p class="stat-num font-display font-800 text-5xl sm:text-6xl mb-3">0</p>
-                        <p class="text-brand-muted text-base leading-relaxed">meetings booked from a Clay table that nobody knows how to run.</p>
-                    </div>
-                </div>
-                <div class="reveal">
-                    <p class="text-brand-muted text-lg max-w-2xl font-light leading-relaxed">
-                        You don't want to become a Clay expert. You want meetings on the calendar.
-                    </p>
                 </div>
             </div>
         </section>
 
-        <div class="rule-accent max-w-6xl mx-auto"></div>
+        <div class="divider max-w-6xl mx-auto"></div>
 
-        <!-- ===================== WHAT I DO ===================== -->
+        <!-- ===================== SAMPLE OUTPUT ===================== -->
         <section class="py-24 sm:py-32 px-6">
             <div class="max-w-6xl mx-auto">
                 <div class="reveal">
-                    <p class="font-display text-xs tracking-[0.3em] text-brand-accent uppercase mb-4">What I Do</p>
-                    <h2 class="font-display font-bold text-3xl sm:text-4xl tracking-tight mb-8 max-w-2xl">
-                        Clay-powered outbound, built to run without me.
+                    <p class="font-display text-xs tracking-[0.3em] text-brand-accent uppercase mb-4">Sample Output</p>
+                    <h2 class="font-display font-bold text-3xl sm:text-4xl tracking-tight mb-16 max-w-2xl">
+                        What a run produces.
                     </h2>
                 </div>
-                <div class="reveal max-w-3xl">
-                    <p class="text-brand-muted text-lg leading-relaxed mb-8 font-light">
-                        I build Clay-powered outbound systems for Series A/B SaaS companies. Signal detection, enrichment pipelines, AI qualification, personalized sequencing — all integrated with your CRM.
-                    </p>
-                    <p class="text-brand-muted text-lg leading-relaxed font-light">
-                        Then I document everything and teach your team to run it without me.
-                    </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 stagger">
+                    <div class="reveal bg-brand-surface border border-brand-border rounded-xl p-8 card-lift">
+                        <p class="font-display font-bold text-xs tracking-[0.2em] text-brand-accent uppercase mb-4">Food Safety</p>
+                        <p class="text-brand-muted text-base leading-relaxed mb-6">
+                            The system found that Naked Nutrition displays an NSF certification badge their own FAQ contradicts. Consumer Reports ranked them last of 23 protein powders for lead content. Nobody was reaching out to them about it.
+                        </p>
+                        <p class="text-brand-text text-sm leading-relaxed">
+                            That finding became an email attachment for a food safety testing company. It started a conversation.
+                        </p>
+                    </div>
+                    <div class="reveal bg-brand-surface border border-brand-border rounded-xl p-8 card-lift">
+                        <p class="font-display font-bold text-xs tracking-[0.2em] text-brand-accent uppercase mb-4">Construction Tech</p>
+                        <p class="text-brand-muted text-base leading-relaxed mb-6">
+                            8 buying signals scored across the commercial construction market. 3 outbound plays targeting firms with active federal projects, recent QA hires, and open RFIs — each built on structured data from federal procurement databases and state licensing boards.
+                        </p>
+                        <p class="text-brand-text text-sm leading-relaxed">
+                            Full intelligence brief, play design, and operator checklist delivered in under a week.
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <div class="rule-accent max-w-6xl mx-auto"></div>
+        <div class="divider max-w-6xl mx-auto"></div>
 
-        <!-- ===================== HOW I'M DIFFERENT ===================== -->
+        <!-- ===================== USE CASES ===================== -->
         <section class="py-24 sm:py-32 px-6">
             <div class="max-w-6xl mx-auto">
-                <div class="reveal mb-16">
-                    <p class="font-display text-xs tracking-[0.3em] text-brand-accent uppercase mb-4">Why Me</p>
-                    <h2 class="font-display font-bold text-3xl sm:text-4xl tracking-tight max-w-2xl">
-                        Not another Clay consultant.
+                <div class="reveal">
+                    <p class="font-display text-xs tracking-[0.3em] text-brand-accent uppercase mb-4">Use Cases</p>
+                    <h2 class="font-display font-bold text-3xl sm:text-4xl tracking-tight mb-16 max-w-2xl">
+                        Different starting points, same system underneath.
                     </h2>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 stagger">
-                    <div class="reveal bg-brand-surface border border-brand-border rounded-xl p-8 card-glow">
-                        <p class="font-display font-bold text-xl mb-4 text-brand-text">"I've Been the Rep"</p>
-                        <p class="text-brand-muted leading-relaxed">
-                            4+ years as SDR and AE before I ever built a Clay table. I build systems that work for the people who actually have to use them.
+                    <div class="reveal bg-brand-surface border border-brand-border rounded-xl p-8 card-lift">
+                        <p class="font-display font-bold text-lg mb-3 text-brand-text">No outbound yet</p>
+                        <p class="text-brand-muted text-sm leading-relaxed">
+                            The full run: market research, scored signals, outbound plays, proof-of-value docs, and an operator checklist. Go from zero to sending.
                         </p>
                     </div>
-                    <div class="reveal bg-brand-surface border border-brand-border rounded-xl p-8 card-glow">
-                        <p class="font-display font-bold text-xl mb-4 text-brand-text">"Ex-Clay Labs"</p>
-                        <p class="text-brand-muted leading-relaxed">
-                            9 months inside Clay Labs working with the platform daily. I know where it breaks and how to make it work.
+                    <div class="reveal bg-brand-surface border border-brand-border rounded-xl p-8 card-lift">
+                        <p class="font-display font-bold text-lg mb-3 text-brand-text">Have the tools, need the system</p>
+                        <p class="text-brand-muted text-sm leading-relaxed">
+                            Clay tables, enrichment pipelines, AI agents, CRM integration. Built, documented, and handed over with walkthroughs.
                         </p>
                     </div>
-                    <div class="reveal bg-brand-surface border border-brand-border rounded-xl p-8 card-glow">
-                        <p class="font-display font-bold text-xl mb-4 text-brand-text">"You Own Everything"</p>
-                        <p class="text-brand-muted leading-relaxed">
-                            Full documentation, annotated workflows, Loom walkthroughs. When the engagement ends, the system stays. No black boxes, no dependency.
+                    <div class="reveal bg-brand-surface border border-brand-border rounded-xl p-8 card-lift">
+                        <p class="font-display font-bold text-lg mb-3 text-brand-text">Already running outbound</p>
+                        <p class="text-brand-muted text-sm leading-relaxed">
+                            Signal audit on what's working and what's not. New plays, new verticals, play iteration based on outcome data.
                         </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <div class="rule-accent max-w-6xl mx-auto"></div>
+        <div class="divider max-w-6xl mx-auto"></div>
 
-        <!-- ===================== PRICING ===================== -->
-        <section id="pricing" class="py-24 sm:py-32 px-6">
-            <div class="max-w-6xl mx-auto">
-                <div class="reveal mb-16">
-                    <p class="font-display text-xs tracking-[0.3em] text-brand-accent uppercase mb-4">Engagements</p>
-                    <h2 class="font-display font-bold text-3xl sm:text-4xl tracking-tight max-w-2xl">
-                        Three ways to work together.
-                    </h2>
-                </div>
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 stagger">
-
-                    <!-- Pipeline Sprint -->
-                    <div class="reveal bg-brand-surface border border-brand-border rounded-xl p-8 flex flex-col card-glow">
-                        <p class="font-display font-bold text-xl mb-1 text-brand-text">Pipeline Sprint</p>
-                        <p class="font-display font-800 text-3xl text-brand-text mb-1">$4,000</p>
-                        <p class="text-brand-faint text-sm mb-6">One-time engagement</p>
-                        <p class="text-brand-muted text-sm mb-8 leading-relaxed">For teams that need a working system fast.</p>
-                        <ul class="space-y-3 text-sm text-brand-muted mb-10 flex-grow">
-                            <li class="check">2-week engagement</li>
-                            <li class="check">Full Clay audit or net-new build</li>
-                            <li class="check">One enrichment pipeline, end-to-end</li>
-                            <li class="check">One outbound play activated</li>
-                            <li class="check">CRM integration configured</li>
-                            <li class="check">Full documentation + Loom walkthroughs</li>
-                        </ul>
-                        <a href="#" class="block text-center font-body font-semibold border border-brand-border text-brand-text px-6 py-3.5 rounded-lg hover:border-brand-accent hover:text-brand-accent transition-all text-sm">
-                            Book a Call
-                        </a>
-                    </div>
-
-                    <!-- Pipeline Engine (highlighted) -->
-                    <div class="reveal bg-brand-surface border border-brand-border rounded-xl p-8 flex flex-col pricing-highlight relative card-glow">
-                        <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand-accent text-brand-bg text-[11px] font-display font-bold px-4 py-1 rounded-full tracking-wider uppercase">Popular</span>
-                        <p class="font-display font-bold text-xl mb-1 text-brand-text">Pipeline Engine</p>
-                        <p class="font-display font-800 text-3xl text-brand-text mb-1">$6,000<span class="text-lg font-medium text-brand-muted">/mo</span></p>
-                        <p class="text-brand-faint text-sm mb-6">3-month engagement</p>
-                        <p class="text-brand-muted text-sm mb-8 leading-relaxed">For teams ready to systematize outbound.</p>
-                        <ul class="space-y-3 text-sm text-brand-muted mb-10 flex-grow">
-                            <li class="check">Deep ICP analysis and signal architecture</li>
-                            <li class="check">3–5 outbound plays built and activated</li>
-                            <li class="check">AI qualification and personalization systems</li>
-                            <li class="check">CRM integration with dedup and routing</li>
-                            <li class="check">Team training + full knowledge transfer</li>
-                            <li class="check">Month-to-month after initial 3 months</li>
-                        </ul>
-                        <a href="#" class="block text-center font-body font-semibold bg-brand-accent text-brand-bg px-6 py-3.5 rounded-lg hover:bg-brand-accent-hover btn-glow transition-all text-sm">
-                            Book a Call
-                        </a>
-                    </div>
-
-                    <!-- Signal Architect -->
-                    <div class="reveal bg-brand-surface border border-brand-border rounded-xl p-8 flex flex-col card-glow">
-                        <p class="font-display font-bold text-xl mb-1 text-brand-text">Signal Architect</p>
-                        <p class="font-display font-800 text-3xl text-brand-text mb-1">$10,000<span class="text-lg font-medium text-brand-muted">/mo</span></p>
-                        <p class="text-brand-faint text-sm mb-6">3-month minimum</p>
-                        <p class="text-brand-muted text-sm mb-8 leading-relaxed">For teams that want competitive advantage.</p>
-                        <ul class="space-y-3 text-sm text-brand-muted mb-10 flex-grow">
-                            <li class="check">Everything in Pipeline Engine, plus:</li>
-                            <li class="check">Custom signal detection systems</li>
-                            <li class="check">Multi-channel orchestration</li>
-                            <li class="check">Advanced AI agent systems</li>
-                            <li class="check">Weekly strategy sessions</li>
-                        </ul>
-                        <a href="#" class="block text-center font-body font-semibold border border-brand-border text-brand-text px-6 py-3.5 rounded-lg hover:border-brand-accent hover:text-brand-accent transition-all text-sm">
-                            Book a Call
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <div class="rule-accent max-w-6xl mx-auto"></div>
-
-        <!-- ===================== CREDIBILITY ===================== -->
+        <!-- ===================== WHO BUILT THIS ===================== -->
         <section class="py-24 sm:py-32 px-6">
             <div class="max-w-6xl mx-auto">
-                <div class="reveal mb-12">
-                    <p class="font-display text-xs tracking-[0.3em] text-brand-accent uppercase mb-4">Background</p>
-                    <h2 class="font-display font-bold text-3xl sm:text-4xl tracking-tight max-w-2xl">
-                        The short version.
-                    </h2>
+                <div class="reveal mb-8">
+                    <p class="font-display text-xs tracking-[0.3em] text-brand-accent uppercase mb-4">Who Built This</p>
                 </div>
-                <div class="reveal flex flex-wrap gap-3">
-                    <span class="inline-block bg-brand-surface border border-brand-border rounded-lg px-5 py-3 text-sm text-brand-text font-medium">
-                        Ex-Clay Labs GTM Engineer
-                    </span>
-                    <span class="inline-block bg-brand-surface border border-brand-border rounded-lg px-5 py-3 text-sm text-brand-muted">
-                        4+ years B2B SaaS sales
-                    </span>
-                    <span class="inline-block bg-brand-surface border border-brand-border rounded-lg px-5 py-3 text-sm text-brand-muted">
-                        Tonic.ai
-                    </span>
-                    <span class="inline-block bg-brand-surface border border-brand-border rounded-lg px-5 py-3 text-sm text-brand-muted">
-                        Rutter
-                    </span>
-                    <span class="inline-block bg-brand-surface border border-brand-border rounded-lg px-5 py-3 text-sm text-brand-muted">
-                        Clay Labs
-                    </span>
+                <div class="reveal max-w-3xl">
+                    <p class="text-brand-text text-lg leading-relaxed mb-6 font-light">
+                        Lucas Linares. Ex-Clay Labs GTM Engineer. 4 years in B2B sales (SDR → AE) at Tonic.ai, Rutter, and Clay Labs. Built Vantage to do in hours what used to take a team weeks — deep market research, signal detection, and outbound plays for niche verticals where generic doesn't reach.
+                    </p>
                 </div>
-                <div class="reveal flex flex-wrap gap-3 mt-4">
-                    <span class="inline-block bg-brand-accent-dim border border-brand-border rounded-lg px-5 py-3 text-sm text-brand-accent">
+                <div class="reveal flex flex-wrap gap-3 mt-6">
+                    <span class="inline-block bg-brand-accent-light border border-brand-border rounded-lg px-5 py-3 text-sm text-brand-accent font-medium">
                         Clay
                     </span>
-                    <span class="inline-block bg-brand-accent-dim border border-brand-border rounded-lg px-5 py-3 text-sm text-brand-accent">
-                        Salesforce
+                    <span class="inline-block bg-brand-accent-light border border-brand-border rounded-lg px-5 py-3 text-sm text-brand-accent font-medium">
+                        AI Agents
                     </span>
-                    <span class="inline-block bg-brand-accent-dim border border-brand-border rounded-lg px-5 py-3 text-sm text-brand-accent">
-                        HubSpot
+                    <span class="inline-block bg-brand-accent-light border border-brand-border rounded-lg px-5 py-3 text-sm text-brand-accent font-medium">
+                        Enrichment APIs
                     </span>
-                    <span class="inline-block bg-brand-accent-dim border border-brand-border rounded-lg px-5 py-3 text-sm text-brand-accent">
-                        Prompt Engineering
+                    <span class="inline-block bg-brand-accent-light border border-brand-border rounded-lg px-5 py-3 text-sm text-brand-accent font-medium">
+                        Signal-Based Outbound
                     </span>
-                    <span class="inline-block bg-brand-accent-dim border border-brand-border rounded-lg px-5 py-3 text-sm text-brand-accent">
-                        Signal-Based GTM
+                    <span class="inline-block bg-brand-accent-light border border-brand-border rounded-lg px-5 py-3 text-sm text-brand-accent font-medium">
+                        CRM Integration
                     </span>
                 </div>
             </div>
         </section>
 
-        <div class="rule-accent max-w-6xl mx-auto"></div>
+        <div class="divider max-w-6xl mx-auto"></div>
 
-        <!-- ===================== SCORECARD CTA ===================== -->
-        <section id="scorecard" class="py-24 sm:py-32 px-6">
+        <!-- ===================== CTA ===================== -->
+        <section class="py-24 sm:py-32 px-6">
             <div class="max-w-4xl mx-auto text-center">
-                <div class="reveal bg-brand-surface border border-brand-border rounded-2xl p-10 sm:p-16 relative overflow-hidden">
-                    <!-- Subtle corner glow -->
-                    <div class="absolute top-0 right-0 w-64 h-64 rounded-full opacity-100 pointer-events-none" style="background: radial-gradient(circle, rgba(0,229,191,0.06) 0%, transparent 70%);"></div>
-
-                    <p class="font-display text-xs tracking-[0.3em] text-brand-accent uppercase mb-4 relative">Free Tool</p>
-                    <h2 class="font-display font-bold text-2xl sm:text-3xl md:text-4xl tracking-tight mb-6 relative">
-                        Not ready to talk?<br>Take the free GTM Infrastructure Scorecard.
+                <div class="reveal bg-brand-surface border border-brand-border rounded-2xl p-10 sm:p-16">
+                    <p class="font-display text-xs tracking-[0.3em] text-brand-accent uppercase mb-4">Let's Talk</p>
+                    <h2 class="font-display font-bold text-2xl sm:text-3xl md:text-4xl tracking-tight mb-6">
+                        See what the system finds for your market.
                     </h2>
-                    <div class="flex flex-col sm:flex-row items-center justify-center gap-6 text-brand-muted text-sm mb-10 relative">
-                        <span class="flex items-center gap-2">
-                            <span class="w-1.5 h-1.5 rounded-full bg-brand-accent inline-block"></span>
-                            5 minutes, immediate results
-                        </span>
-                        <span class="flex items-center gap-2">
-                            <span class="w-1.5 h-1.5 rounded-full bg-brand-accent inline-block"></span>
-                            6 dimensions scored
-                        </span>
-                        <span class="flex items-center gap-2">
-                            <span class="w-1.5 h-1.5 rounded-full bg-brand-accent inline-block"></span>
-                            Personalized recommendations
-                        </span>
-                    </div>
-                    <a href="#scorecard" class="relative inline-block font-body font-semibold bg-brand-accent text-brand-bg px-10 py-4 rounded-lg hover:bg-brand-accent-hover btn-glow transition-all text-base">
-                        Take the Scorecard
+                    <p class="text-brand-muted text-lg mb-10 font-light leading-relaxed max-w-xl mx-auto">
+                        30-minute diagnostic. Walk through a sample run, talk through your vertical, and see if it's a fit.
+                    </p>
+                    <a href="https://cal.com/lucas-gfxkfd/30min" class="inline-block font-body font-semibold bg-brand-accent text-white px-10 py-4 rounded-lg hover:bg-brand-accent-hover btn-primary transition-all text-base">
+                        Book a Diagnostic Call
                     </a>
                 </div>
             </div>
@@ -456,11 +371,11 @@
             <div class="flex flex-col sm:flex-row items-center gap-4">
                 <span class="font-display font-bold text-sm tracking-[0.15em] text-brand-text">LUCAS LINARES</span>
                 <span class="hidden sm:inline text-brand-faint">·</span>
-                <a href="mailto:lucas@placeholder.com" class="text-sm text-brand-muted hover:text-brand-accent transition-colors">
-                    lucas@placeholder.com
+                <a href="mailto:lucaslinares1@gmail.com" class="text-sm text-brand-muted hover:text-brand-accent transition-colors">
+                    lucaslinares1@gmail.com
                 </a>
                 <span class="hidden sm:inline text-brand-faint">·</span>
-                <a href="#" class="text-sm text-brand-muted hover:text-brand-accent transition-colors">
+                <a href="https://www.linkedin.com/in/lucas-linares1/" class="text-sm text-brand-muted hover:text-brand-accent transition-colors">
                     LinkedIn
                 </a>
             </div>
@@ -484,6 +399,73 @@
         });
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // ═══ TERMINAL ANIMATION ═══
+        const terminalLines = [
+            { html: '<span class="term-prompt">$</span> <span class="term-cmd">vantage run</span> <span class="term-flag">--vertical</span> <span class="term-string">"food-safety"</span>' },
+            { html: '' },
+            { html: '<span class="term-phase">[RESEARCH]</span> <span class="term-label">Scanning 14 data sources...</span>' },
+            { html: '  <span class="term-dim">→</span> <span class="term-label">FDA enforcement actions</span> <span class="term-dim">.............</span> <span class="term-value">847 records</span>' },
+            { html: '  <span class="term-dim">→</span> <span class="term-label">State licensing boards</span> <span class="term-dim">..............</span> <span class="term-value">2,341 entries</span>' },
+            { html: '  <span class="term-dim">→</span> <span class="term-label">Job postings (QA/compliance)</span> <span class="term-dim">........</span> <span class="term-value">156 active</span>' },
+            { html: '  <span class="term-dim">→</span> <span class="term-label">Industry certifications</span> <span class="term-dim">.............</span> <span class="term-value">94 flagged</span>' },
+            { html: '  <span class="term-dim">→</span> <span class="term-label">Funding announcements</span> <span class="term-dim">..............</span> <span class="term-value">23 recent</span>' },
+            { html: '' },
+            { html: '<span class="term-phase">[SCORE]</span> <span class="term-label">Evaluating buying signals...</span>' },
+            { html: '  <span class="term-dim">→</span> <span class="term-label">NSF certification gaps</span> <span class="term-dim">..........</span> <span class="term-value">0.91</span> <span class="term-bar-fill">████████▌</span>' },
+            { html: '  <span class="term-dim">→</span> <span class="term-label">Recent FDA warning letters</span> <span class="term-dim">......</span> <span class="term-value">0.87</span> <span class="term-bar-fill">████████</span>' },
+            { html: '  <span class="term-dim">→</span> <span class="term-label">QA team expansion</span> <span class="term-dim">................</span> <span class="term-value">0.74</span> <span class="term-bar-fill">██████▌</span>' },
+            { html: '  <span class="term-dim">→</span> <span class="term-label">Competitor recall events</span> <span class="term-dim">........</span> <span class="term-value">0.68</span> <span class="term-bar-fill">█████▌</span>' },
+            { html: '  <span class="term-fail">✕</span> <span class="term-dim">Generic compliance interest</span> <span class="term-dim">......</span> <span class="term-fail">0.31</span> <span class="term-bar-fill term-bar-low">██▌</span>' },
+            { html: '' },
+            { html: '<span class="term-phase">[BUILD]</span> <span class="term-label">Generating outbound plays...</span>' },
+            { html: '  <span class="term-dim">→</span> <span class="term-label">Play 1: Certification contradiction</span>  <span class="term-pass">✓ ready</span>' },
+            { html: '  <span class="term-dim">→</span> <span class="term-label">Play 2: Post-recall outreach</span>        <span class="term-pass">✓ ready</span>' },
+            { html: '  <span class="term-dim">→</span> <span class="term-label">Play 3: New QA hire trigger</span>         <span class="term-pass">✓ ready</span>' },
+            { html: '  <span class="term-dim">→</span> <span class="term-label">Proof-of-value docs</span>                <span class="term-pass">✓ attached</span>' },
+            { html: '  <span class="term-dim">→</span> <span class="term-label">Operator checklist</span>                 <span class="term-pass">✓ generated</span>' },
+            { html: '' },
+            { html: '<span class="term-pass">✓</span> <span class="term-value">Complete.</span> <span class="term-label">3 plays · 12 signals · 1 intelligence brief</span>' },
+            { html: '' },
+            { html: '<span class="term-prompt">$</span> <span class="term-cursor"></span>', isCursor: true },
+        ];
+
+        let terminalFired = false;
+        const terminalEl = document.getElementById('pipeline-terminal');
+        const terminalOutput = document.getElementById('terminal-output');
+
+        function runTerminal() {
+            if (terminalFired) return;
+            terminalFired = true;
+
+            terminalLines.forEach((line) => {
+                const div = document.createElement('div');
+                div.className = 'term-line';
+                div.innerHTML = line.html || '&nbsp;';
+                terminalOutput.appendChild(div);
+            });
+
+            const allLines = terminalOutput.querySelectorAll('.term-line');
+            let delay = 200;
+            allLines.forEach((el, i) => {
+                const isBlank = terminalLines[i].html === '';
+                const isPhase = terminalLines[i].html.includes('term-phase');
+                if (isPhase) delay += 120;
+                setTimeout(() => el.classList.add('visible'), delay);
+                delay += isBlank ? 30 : isPhase ? 80 : 55;
+            });
+        }
+
+        const termObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    runTerminal();
+                    termObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        if (terminalEl) termObserver.observe(terminalEl);
 
         // Nav scroll behavior
         const nav = document.querySelector('nav');
