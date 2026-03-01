@@ -22,6 +22,16 @@ Signal-based outbound intelligence. We find public data that proves a company's 
 
 ---
 
+## Offer Evolution
+
+| Phase | Timeline | What Changes | Price |
+|-------|----------|-------------|-------|
+| **Phase 1: Prove it** | Now – Month 6 | Current offer. Free 10 then $3-5K/month. Short engagements, one signal, one vertical. Building proof and case studies. | $3,000-5,000/month |
+| **Phase 2: Multi-signal** | Month 6-12 | Multi-signal packages. Cross-referenced data sources per vertical (e.g., OSHA + permit filings + insurance lapse data for construction). Deeper intelligence per prospect. | $6,000-10,000/month |
+| **Phase 3: Continuous monitoring** | Year 2+ | Live system that flags new prospects as they cross thresholds. Not monthly batches — ongoing detection. Client gets alerts when a new company enters the danger zone. | $10,000-15,000/month retainers |
+
+---
+
 ## ICP Definition
 
 ### Firmographics
@@ -32,7 +42,7 @@ Signal-based outbound intelligence. We find public data that proves a company's 
 | Team size | 10-200 employees |
 | Sales motion | Founder-led or small sales team (1-5 reps) |
 | Category | Vertical SaaS, B2B services, or industrial technology |
-| Buyer's industry | Must have heavy federal/state/local compliance data — construction, fleet management, energy, commercial real estate, data centers, heavy equipment, healthcare facilities, manufacturing |
+| Buyer's industry | Must sell into regulated, licensed, or inspected industries where federal/state/local public data tracks their buyers' problems. Examples but not limited to: construction, fleet management, energy, commercial real estate, data centers, automotive, local services, fintech, healthcare facilities, manufacturing |
 | Geography | US-based (federal databases are US-centric for now) |
 | GTM maturity | Has a product, has some customers, doing outbound but results are mediocre. Not pre-product. Not enterprise with a 20-person sales org. |
 
@@ -59,6 +69,8 @@ Examples that pass:
 - Building owners don't know their ENERGY STAR score and LL97 penalty exposure are calculable from public data
 - Data center operators don't know their cooling specs are publishable alongside GPU roadmaps
 - Construction companies don't know their OSHA investigation history is cross-referenceable with their permit filings
+- Auto dealerships don't know their warranty complaint patterns and FTC enforcement exposure are trackable from public filings
+- Fintech companies don't know their prospects' state money transmitter license status and FinCEN registration gaps are public record
 
 Examples that fail:
 - SaaS companies selling to other SaaS companies — buyers are data-literate, no asymmetry
@@ -99,11 +111,11 @@ Examples that fail:
 
 **Pain points (in their words):**
 - "Our SDRs are sending 200 emails a day and booking maybe 3 meetings a week"
-- "We use intent data but it's the same signals everyone else has — job postings, funding announcements, website visits"
+- "We use the same intent data as every other company in our space — job postings, funding announcements, website visits. Nothing differentiates our outreach."
 - "I need something that makes our outbound stand out because every inbox is flooded with AI-personalized garbage"
 - "My CEO keeps asking why our reply rates are dropping and I don't have a good answer"
 
-**What they actually need:** A differentiated signal source that their competitors don't have. Not more volume — more precision. The ability to say "we emailed 100 companies this month and 15 replied because every message referenced a specific, verifiable problem."
+**What they actually need:** A signal source their competitors aren't using. Not more volume, not better copy — intelligence their reps can use that no competitor is sending. Thresh arms the existing team with data advantages, not replacement workflows.
 
 **Trigger to buy:** Reply rates have dropped below 1%. CEO is questioning outbound spend. They've already tried switching email copy, subject lines, and sequencing cadences. The problem isn't the words — it's the targeting.
 
