@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <!-- dev branch -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thresh — Signal-Based Outbound for Niche B2B</title>
@@ -34,6 +33,7 @@
                     fontFamily: {
                         display: ['Syne', 'sans-serif'],
                         body: ['Outfit', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
                     },
                 }
             }
@@ -99,15 +99,15 @@
             color: #D4622B;
         }
 
-        /* ═══ TERMINAL ═══ */
-        .terminal {
+        /* Email card */
+        .email-card {
             font-family: 'JetBrains Mono', monospace;
             background: #111111;
             border: 1px solid #242424;
             border-radius: 12px;
             overflow: hidden;
         }
-        .terminal-bar {
+        .email-bar {
             display: flex;
             align-items: center;
             gap: 8px;
@@ -115,70 +115,60 @@
             background: #181818;
             border-bottom: 1px solid #242424;
         }
-        .terminal-dot {
+        .email-dot {
             width: 10px;
             height: 10px;
             border-radius: 50%;
         }
-        .terminal-dot:nth-child(1) { background: #E54D42; opacity: 0.8; }
-        .terminal-dot:nth-child(2) { background: #E8B44D; opacity: 0.8; }
-        .terminal-dot:nth-child(3) { background: #5CB85C; opacity: 0.8; }
-        .terminal-title {
+        .email-dot:nth-child(1) { background: #E54D42; opacity: 0.8; }
+        .email-dot:nth-child(2) { background: #E8B44D; opacity: 0.8; }
+        .email-dot:nth-child(3) { background: #5CB85C; opacity: 0.8; }
+        .email-label {
             font-size: 11px;
             color: #4A4A45;
             letter-spacing: 0.05em;
             margin-left: 8px;
         }
-        .terminal-body {
-            padding: 20px 24px;
-            font-size: 13px;
-            line-height: 1.7;
-            min-height: 420px;
+        .email-body {
+            padding: 24px 28px;
+            font-size: 14px;
+            line-height: 1.8;
+            color: #C8C6C0;
         }
-        @media (min-width: 640px) {
-            .terminal-body { font-size: 13.5px; padding: 24px 28px; }
+
+        /* Form inputs */
+        .form-input {
+            background: #111111;
+            border: 1px solid #242424;
+            border-radius: 8px;
+            padding: 12px 16px;
+            color: #E8E6E1;
+            font-family: 'Outfit', sans-serif;
+            font-size: 15px;
+            width: 100%;
+            transition: border-color 0.3s ease;
         }
-        .term-line {
-            opacity: 0;
-            transform: translateY(2px);
-            white-space: pre;
-            overflow-x: auto;
+        .form-input:focus {
+            outline: none;
+            border-color: #D4622B;
         }
-        .term-line.visible {
-            opacity: 1;
-            transform: translateY(0);
-            transition: opacity 0.15s ease, transform 0.15s ease;
+        .form-input::placeholder {
+            color: #4A4A45;
         }
-        .term-cmd { color: #E8E8E4; }
-        .term-flag { color: #D4622B; }
-        .term-string { color: #E8B44D; }
-        .term-phase { color: #D4622B; font-weight: 700; }
-        .term-dim { color: #3D3D38; }
-        .term-label { color: #8A8880; }
-        .term-value { color: #E8E8E4; }
-        .term-pass { color: #5CB85C; }
-        .term-fail { color: #E54D42; }
-        .term-bar-fill {
-            display: inline-block;
+
+        /* Check / X list markers */
+        .list-check li::before {
+            content: '→';
             color: #D4622B;
-            opacity: 0;
-            transition: opacity 0.2s ease 0.1s;
+            font-weight: 700;
+            margin-right: 12px;
         }
-        .term-line.visible .term-bar-fill { opacity: 1; }
-        .term-bar-low { color: #E54D42; }
-        .term-cursor {
-            display: inline-block;
-            width: 8px;
-            height: 16px;
-            background: #D4622B;
-            margin-left: 2px;
-            vertical-align: text-bottom;
-            animation: blink 1s step-end infinite;
+        .list-x li::before {
+            content: '✕';
+            color: #4A4A45;
+            font-weight: 700;
+            margin-right: 12px;
         }
-        @keyframes blink {
-            50% { opacity: 0; }
-        }
-        .term-prompt { color: #D4622B; }
     </style>
 </head>
 
@@ -191,7 +181,7 @@
                 THRESH
             </a>
             <a href="https://cal.com/lucas-gfxkfd/30min" class="text-sm font-body font-semibold bg-brand-accent text-white px-5 py-2.5 rounded-lg hover:bg-brand-accent-hover btn-primary transition-all">
-                Book a Call
+                Book 15 Min
             </a>
         </div>
     </nav>
@@ -205,120 +195,97 @@
                     <p class="font-display text-xs tracking-[0.3em] text-brand-accent uppercase mb-8">Thresh</p>
                 </div>
                 <h1 class="reveal font-display font-800 text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight mb-8">
-                    Signal-based outbound<br class="hidden sm:block">
-                    <span class="headline-accent">for markets where volume doesn't work.</span>
+                    Your prospects have problems<br class="hidden sm:block">
+                    <span class="headline-accent">they don't know are public.</span><br class="hidden sm:block">
+                    I find them.
                 </h1>
-                <p class="reveal font-body text-lg sm:text-xl text-brand-muted max-w-2xl mx-auto mb-10 leading-relaxed font-light">
-                    An intelligence system that researches your market, scores buying signals, and produces outbound plays your team can run this week.
+                <p class="reveal font-body text-lg sm:text-xl text-brand-muted max-w-2xl mx-auto mb-12 leading-relaxed font-light">
+                    Signal-based outbound for B2B companies selling into industries with public compliance, safety, and infrastructure data. I find the trigger, build the list, and write the messages.
                 </p>
-                <div class="reveal grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 max-w-2xl mx-auto mb-12 text-left">
-                    <div>
-                        <p class="text-brand-accent font-display font-bold text-sm mb-1">01</p>
-                        <p class="text-brand-muted text-sm leading-relaxed">You tell us your market and ICP.</p>
-                    </div>
-                    <div>
-                        <p class="text-brand-accent font-display font-bold text-sm mb-1">02</p>
-                        <p class="text-brand-muted text-sm leading-relaxed">We run the system against it before the call.</p>
-                    </div>
-                    <div>
-                        <p class="text-brand-accent font-display font-bold text-sm mb-1">03</p>
-                        <p class="text-brand-muted text-sm leading-relaxed">You walk in with plays ready to review.</p>
-                    </div>
-                </div>
                 <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <a href="https://cal.com/lucas-gfxkfd/30min" class="w-full sm:w-auto text-center font-body font-semibold bg-brand-accent text-white px-8 py-4 rounded-lg hover:bg-brand-accent-hover btn-primary transition-all text-base">
-                        Book a Diagnostic Call
+                    <a href="#example" class="w-full sm:w-auto text-center font-body font-semibold bg-brand-accent text-white px-8 py-4 rounded-lg hover:bg-brand-accent-hover btn-primary transition-all text-base">
+                        See a Real Example
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- ===================== THE SYSTEM ===================== -->
-        <section class="py-24 sm:py-32 px-6">
-            <div class="max-w-6xl mx-auto">
+        <div class="divider max-w-6xl mx-auto"></div>
+
+        <!-- ===================== THE EXAMPLE ===================== -->
+        <section id="example" class="py-24 sm:py-32 px-6 scroll-mt-20">
+            <div class="max-w-4xl mx-auto">
                 <div class="reveal">
-                    <p class="font-display text-xs tracking-[0.3em] text-brand-accent uppercase mb-4">The System</p>
-                    <h2 class="font-display font-bold text-3xl sm:text-4xl tracking-tight mb-16 max-w-2xl">
-                        From raw market data to outreach ready to send.
+                    <p class="font-display text-xs tracking-[0.3em] text-brand-accent uppercase mb-4">What This Looks Like</p>
+                    <h2 class="font-display font-bold text-3xl sm:text-4xl tracking-tight mb-6 max-w-3xl">
+                        What this looks like in practice.
                     </h2>
+                    <p class="text-brand-muted text-lg leading-relaxed max-w-3xl mb-12 font-light">
+                        A commercial building technology company needed to reach facilities leaders at properties facing millions in regulatory penalties. Here's what I built using nothing but public data.
+                    </p>
                 </div>
-                <div class="reveal relative max-w-3xl mx-auto">
-                    <div class="terminal" id="pipeline-terminal">
-                        <div class="terminal-bar">
-                            <span class="terminal-dot"></span>
-                            <span class="terminal-dot"></span>
-                            <span class="terminal-dot"></span>
-                            <span class="terminal-title">thresh</span>
+
+                <div class="reveal mb-10">
+                    <p class="font-display text-xs tracking-[0.2em] text-brand-muted uppercase mb-4">The email their rep sent</p>
+                    <div class="email-card">
+                        <div class="email-bar">
+                            <span class="email-dot"></span>
+                            <span class="email-dot"></span>
+                            <span class="email-dot"></span>
+                            <span class="email-label">outbound</span>
                         </div>
-                        <div class="terminal-body" id="terminal-output">
+                        <div class="email-body">
+                            <p>277 Park Avenue scored 14 on ENERGY STAR in its most recent benchmarking report — that's bottom 14% of comparable US office buildings. Under LL97, the building's reported emissions put the estimated annual penalty at $1.54 million today, nearly doubling when the 2030 limits take effect.</p>
+                            <br>
+                            <p>I built a compliance exposure projection specific to 277 Park — penalty math by compliance period, including the threshold cliff in 2030. The full analysis is attached.</p>
+                            <br>
+                            <p>Does this match what your team is modeling for LL97?</p>
                         </div>
                     </div>
+                </div>
+
+                <div class="reveal space-y-6">
+                    <p class="text-brand-muted text-base leading-relaxed">
+                        Every number in that email traces to a public source — NYC benchmarking data, published penalty formulas, ENERGY STAR scoring. No guessing. No AI hallucinations. The prospect can verify every claim in 5 minutes.
+                    </p>
+                    <p class="text-brand-muted text-base leading-relaxed">
+                        Behind that 4-sentence email sits a full building-specific analysis — energy profile, penalty projections by compliance period, rate increase compounding, and peer comparisons. The prospect gets a short message. The research behind it is deep.
+                    </p>
                 </div>
             </div>
         </section>
 
         <div class="divider max-w-6xl mx-auto"></div>
 
-        <!-- ===================== SAMPLE OUTPUT ===================== -->
+        <!-- ===================== HOW IT WORKS ===================== -->
         <section class="py-24 sm:py-32 px-6">
             <div class="max-w-6xl mx-auto">
                 <div class="reveal">
-                    <p class="font-display text-xs tracking-[0.3em] text-brand-accent uppercase mb-4">Sample Output</p>
+                    <p class="font-display text-xs tracking-[0.3em] text-brand-accent uppercase mb-4">How It Works</p>
                     <h2 class="font-display font-bold text-3xl sm:text-4xl tracking-tight mb-16 max-w-2xl">
-                        What a run produces.
-                    </h2>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 stagger">
-                    <div class="reveal bg-brand-surface border border-brand-border rounded-xl p-8 card-lift">
-                        <p class="font-display font-bold text-xs tracking-[0.2em] text-brand-accent uppercase mb-4">Food Safety</p>
-                        <p class="text-brand-muted text-base leading-relaxed mb-6">
-                            The system found that Naked Nutrition displays an NSF certification badge their own FAQ contradicts. Consumer Reports ranked them last of 23 protein powders for lead content. Nobody was reaching out to them about it.
-                        </p>
-                        <p class="text-brand-text text-sm leading-relaxed">
-                            That finding became an email attachment for a food safety testing company. It started a conversation.
-                        </p>
-                    </div>
-                    <div class="reveal bg-brand-surface border border-brand-border rounded-xl p-8 card-lift">
-                        <p class="font-display font-bold text-xs tracking-[0.2em] text-brand-accent uppercase mb-4">Construction Tech</p>
-                        <p class="text-brand-muted text-base leading-relaxed mb-6">
-                            8 buying signals scored across the commercial construction market. 3 outbound plays targeting firms with active federal projects, recent QA hires, and open RFIs — each built on structured data from federal procurement databases and state licensing boards.
-                        </p>
-                        <p class="text-brand-text text-sm leading-relaxed">
-                            Full intelligence brief, play design, and operator checklist delivered in under a week.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div class="divider max-w-6xl mx-auto"></div>
-
-        <!-- ===================== USE CASES ===================== -->
-        <section class="py-24 sm:py-32 px-6">
-            <div class="max-w-6xl mx-auto">
-                <div class="reveal">
-                    <p class="font-display text-xs tracking-[0.3em] text-brand-accent uppercase mb-4">Use Cases</p>
-                    <h2 class="font-display font-bold text-3xl sm:text-4xl tracking-tight mb-16 max-w-2xl">
-                        Different starting points, same system underneath.
+                        Three steps. All verifiable.
                     </h2>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 stagger">
                     <div class="reveal bg-brand-surface border border-brand-border rounded-xl p-8 card-lift">
-                        <p class="font-display font-bold text-lg mb-3 text-brand-text">No outbound yet</p>
+                        <p class="text-brand-accent font-display font-bold text-sm mb-3">01</p>
+                        <p class="font-display font-bold text-lg mb-3 text-brand-text">I find the signal.</p>
                         <p class="text-brand-muted text-sm leading-relaxed">
-                            The full run: market research, scored signals, outbound plays, proof-of-value docs, and an operator checklist. Go from zero to sending.
+                            I identify a specific public data trigger that proves your prospect has a problem right now. Federal safety records, building compliance scores, permit filings, regulatory deadlines. Not intent data. Not job postings. Undeniable, verifiable events.
                         </p>
                     </div>
                     <div class="reveal bg-brand-surface border border-brand-border rounded-xl p-8 card-lift">
-                        <p class="font-display font-bold text-lg mb-3 text-brand-text">Have the tools, need the system</p>
+                        <p class="text-brand-accent font-display font-bold text-sm mb-3">02</p>
+                        <p class="font-display font-bold text-lg mb-3 text-brand-text">I build the list.</p>
                         <p class="text-brand-muted text-sm leading-relaxed">
-                            Clay tables, enrichment pipelines, AI agents, CRM integration. Built, documented, and handed over with walkthroughs.
+                            I pull prospects experiencing that signal, enrich decision-maker contacts, and score them by severity. Every record has a source you can click through and verify.
                         </p>
                     </div>
                     <div class="reveal bg-brand-surface border border-brand-border rounded-xl p-8 card-lift">
-                        <p class="font-display font-bold text-lg mb-3 text-brand-text">Already running outbound</p>
+                        <p class="text-brand-accent font-display font-bold text-sm mb-3">03</p>
+                        <p class="font-display font-bold text-lg mb-3 text-brand-text">I write the messages.</p>
                         <p class="text-brand-muted text-sm leading-relaxed">
-                            Signal audit on what's working and what's not. New plays, new verticals, play iteration based on outcome data.
+                            Each prospect gets a 3-4 sentence message built from their specific data. No templates. No "I noticed your company is growing." One insight per message that makes them think "how did you know that?"
                         </p>
                     </div>
                 </div>
@@ -327,52 +294,127 @@
 
         <div class="divider max-w-6xl mx-auto"></div>
 
-        <!-- ===================== WHO BUILT THIS ===================== -->
+        <!-- ===================== WHO IT'S FOR ===================== -->
         <section class="py-24 sm:py-32 px-6">
             <div class="max-w-6xl mx-auto">
-                <div class="reveal mb-8">
-                    <p class="font-display text-xs tracking-[0.3em] text-brand-accent uppercase mb-4">Who Built This</p>
-                </div>
-                <div class="reveal max-w-3xl">
-                    <p class="text-brand-text text-lg leading-relaxed mb-6 font-light">
-                        Lucas Linares. Ex-Clay Labs GTM Engineer. 4 years in B2B sales (SDR → AE) at Tonic.ai, Rutter, and Clay Labs. Built this system to do in hours what used to take a team weeks — deep market research, signal detection, and outbound plays for niche verticals where generic doesn't reach.
-                    </p>
-                </div>
-                <div class="reveal flex flex-wrap gap-3 mt-6">
-                    <span class="inline-block bg-brand-accent-light border border-brand-border rounded-lg px-5 py-3 text-sm text-brand-accent font-medium">
-                        Clay
-                    </span>
-                    <span class="inline-block bg-brand-accent-light border border-brand-border rounded-lg px-5 py-3 text-sm text-brand-accent font-medium">
-                        AI Agents
-                    </span>
-                    <span class="inline-block bg-brand-accent-light border border-brand-border rounded-lg px-5 py-3 text-sm text-brand-accent font-medium">
-                        Enrichment APIs
-                    </span>
-                    <span class="inline-block bg-brand-accent-light border border-brand-border rounded-lg px-5 py-3 text-sm text-brand-accent font-medium">
-                        Signal-Based Outbound
-                    </span>
-                    <span class="inline-block bg-brand-accent-light border border-brand-border rounded-lg px-5 py-3 text-sm text-brand-accent font-medium">
-                        CRM Integration
-                    </span>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+                    <!-- Who It's For -->
+                    <div>
+                        <div class="reveal">
+                            <p class="font-display text-xs tracking-[0.3em] text-brand-accent uppercase mb-4">Who It's For</p>
+                            <h2 class="font-display font-bold text-2xl sm:text-3xl tracking-tight mb-8">
+                                Built for these companies.
+                            </h2>
+                        </div>
+                        <ul class="reveal list-check space-y-5">
+                            <li class="flex text-brand-muted text-sm leading-relaxed">
+                                B2B companies whose buyers face regulatory pressure, safety compliance, or infrastructure deadlines — and where public data can prove it
+                            </li>
+                            <li class="flex text-brand-muted text-sm leading-relaxed">
+                                Vertical SaaS founders doing founder-led sales who don't have time to build this themselves
+                            </li>
+                            <li class="flex text-brand-muted text-sm leading-relaxed">
+                                Companies selling into construction, fleet management, energy, real estate, data center infrastructure, or any industry where government databases create information asymmetry
+                            </li>
+                            <li class="flex text-brand-muted text-sm leading-relaxed">
+                                Sales teams tired of sending outbound that sounds like everyone else's
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Who It's Not For -->
+                    <div>
+                        <div class="reveal">
+                            <p class="font-display text-xs tracking-[0.3em] text-brand-faint uppercase mb-4">Who It's Not For</p>
+                            <h2 class="font-display font-bold text-2xl sm:text-3xl tracking-tight mb-8 text-brand-muted">
+                                Not the right fit for these.
+                            </h2>
+                        </div>
+                        <ul class="reveal list-x space-y-5">
+                            <li class="flex text-brand-muted text-sm leading-relaxed">
+                                Horizontal SaaS selling to other tech companies — your buyers are too sophisticated and the data advantage is thin
+                            </li>
+                            <li class="flex text-brand-muted text-sm leading-relaxed">
+                                Companies that need someone to manage their CRM, inbox, or SDR team — I deliver intelligence and messages, not execution
+                            </li>
+                            <li class="flex text-brand-muted text-sm leading-relaxed">
+                                "Let's test some AI outbound" budgets — if the problem isn't obvious and the data doesn't exist, this isn't the right fit
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
 
         <div class="divider max-w-6xl mx-auto"></div>
 
-        <!-- ===================== CTA ===================== -->
+        <!-- ===================== THE OFFER ===================== -->
         <section class="py-24 sm:py-32 px-6">
             <div class="max-w-4xl mx-auto text-center">
                 <div class="reveal bg-brand-surface border border-brand-border rounded-2xl p-10 sm:p-16">
-                    <p class="font-display text-xs tracking-[0.3em] text-brand-accent uppercase mb-4">Let's Talk</p>
+                    <p class="font-display text-xs tracking-[0.3em] text-brand-accent uppercase mb-4">The Offer</p>
                     <h2 class="font-display font-bold text-2xl sm:text-3xl md:text-4xl tracking-tight mb-6">
-                        See what the system finds for your market.
+                        Your first 10 prospects are free.
                     </h2>
-                    <p class="text-brand-muted text-lg mb-10 font-light leading-relaxed max-w-xl mx-auto">
-                        30-minute diagnostic. Walk through a sample run, talk through your vertical, and see if it's a fit.
+                    <p class="text-brand-muted text-base sm:text-lg mb-4 font-light leading-relaxed max-w-2xl mx-auto">
+                        I'll pick one signal in your market, pull 10 companies experiencing it right now, enrich the decision-makers, and write the messages. You send them.
                     </p>
-                    <a href="https://cal.com/lucas-gfxkfd/30min" class="inline-block font-body font-semibold bg-brand-accent text-white px-10 py-4 rounded-lg hover:bg-brand-accent-hover btn-primary transition-all text-base">
-                        Book a Diagnostic Call
+                    <p class="text-brand-muted text-base sm:text-lg mb-4 font-light leading-relaxed max-w-2xl mx-auto">
+                        No pitch deck. No proposal. I just show you what the output looks like with your prospects, your market, your data.
+                    </p>
+                    <p class="text-brand-text text-base sm:text-lg font-medium leading-relaxed max-w-2xl mx-auto">
+                        If it books meetings, we talk about a monthly engagement.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider max-w-6xl mx-auto"></div>
+
+        <!-- ===================== ABOUT ===================== -->
+        <section class="py-24 sm:py-32 px-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="reveal mb-8">
+                    <p class="font-display text-xs tracking-[0.3em] text-brand-accent uppercase mb-4">About</p>
+                </div>
+                <div class="reveal max-w-3xl">
+                    <p class="text-brand-text text-lg leading-relaxed font-light">
+                        I spent 4 years carrying a sales quota before I started building the systems I wished I'd had. I built enrichment pipelines and AI qualification systems at Clay for their enterprise clients. Now I build signal-based outbound for companies whose buyers have real, provable, undeniable problems — surfaced by data those buyers don't know is public.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider max-w-6xl mx-auto"></div>
+
+        <!-- ===================== BOTTOM CTA ===================== -->
+        <section class="py-24 sm:py-32 px-6">
+            <div class="max-w-3xl mx-auto">
+                <div class="reveal text-center mb-12">
+                    <h2 class="font-display font-bold text-2xl sm:text-3xl md:text-4xl tracking-tight mb-4">
+                        Tell me your market and I'll tell you<br class="hidden sm:block">
+                        <span class="headline-accent">what signal I'd pull.</span>
+                    </h2>
+                </div>
+
+                <form class="reveal space-y-5" action="https://formspree.io/f/mvzbnrkd" method="POST">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <input type="text" name="name" placeholder="Name" required class="form-input">
+                        <input type="text" name="company" placeholder="Company" required class="form-input">
+                    </div>
+                    <input type="text" name="what_you_sell" placeholder="What you sell" required class="form-input">
+                    <input type="text" name="who_you_sell_to" placeholder="Who you sell to" required class="form-input">
+                    <div class="pt-2">
+                        <button type="submit" class="w-full font-body font-semibold bg-brand-accent text-white px-8 py-4 rounded-lg hover:bg-brand-accent-hover btn-primary transition-all text-base">
+                            Send It
+                        </button>
+                    </div>
+                </form>
+
+                <div class="reveal text-center mt-8">
+                    <p class="text-brand-muted text-sm mb-3">Or skip the form</p>
+                    <a href="https://cal.com/lucas-gfxkfd/30min" class="inline-block text-brand-accent hover:text-brand-accent-hover font-medium text-sm transition-colors">
+                        Book 15 minutes →
                     </a>
                 </div>
             </div>
@@ -416,73 +458,6 @@
         });
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-        // ═══ TERMINAL ANIMATION ═══
-        const terminalLines = [
-            { html: '<span class="term-prompt">$</span> <span class="term-cmd">thresh run</span> <span class="term-flag">--vertical</span> <span class="term-string">"food-safety"</span>' },
-            { html: '' },
-            { html: '<span class="term-phase">[RESEARCH]</span> <span class="term-label">Scanning 14 data sources...</span>' },
-            { html: '  <span class="term-dim">→</span> <span class="term-label">FDA enforcement actions</span> <span class="term-dim">.............</span> <span class="term-value">847 records</span>' },
-            { html: '  <span class="term-dim">→</span> <span class="term-label">State licensing boards</span> <span class="term-dim">..............</span> <span class="term-value">2,341 entries</span>' },
-            { html: '  <span class="term-dim">→</span> <span class="term-label">Job postings (QA/compliance)</span> <span class="term-dim">........</span> <span class="term-value">156 active</span>' },
-            { html: '  <span class="term-dim">→</span> <span class="term-label">Industry certifications</span> <span class="term-dim">.............</span> <span class="term-value">94 flagged</span>' },
-            { html: '  <span class="term-dim">→</span> <span class="term-label">Funding announcements</span> <span class="term-dim">..............</span> <span class="term-value">23 recent</span>' },
-            { html: '' },
-            { html: '<span class="term-phase">[SCORE]</span> <span class="term-label">Evaluating buying signals...</span>' },
-            { html: '  <span class="term-dim">→</span> <span class="term-label">NSF certification gaps</span> <span class="term-dim">..........</span> <span class="term-value">0.91</span> <span class="term-bar-fill">████████▌</span>' },
-            { html: '  <span class="term-dim">→</span> <span class="term-label">Recent FDA warning letters</span> <span class="term-dim">......</span> <span class="term-value">0.87</span> <span class="term-bar-fill">████████</span>' },
-            { html: '  <span class="term-dim">→</span> <span class="term-label">QA team expansion</span> <span class="term-dim">................</span> <span class="term-value">0.74</span> <span class="term-bar-fill">██████▌</span>' },
-            { html: '  <span class="term-dim">→</span> <span class="term-label">Competitor recall events</span> <span class="term-dim">........</span> <span class="term-value">0.68</span> <span class="term-bar-fill">█████▌</span>' },
-            { html: '  <span class="term-fail">✕</span> <span class="term-dim">Generic compliance interest</span> <span class="term-dim">......</span> <span class="term-fail">0.31</span> <span class="term-bar-fill term-bar-low">██▌</span>' },
-            { html: '' },
-            { html: '<span class="term-phase">[BUILD]</span> <span class="term-label">Generating outbound plays...</span>' },
-            { html: '  <span class="term-dim">→</span> <span class="term-label">Play 1: Certification contradiction</span>  <span class="term-pass">✓ ready</span>' },
-            { html: '  <span class="term-dim">→</span> <span class="term-label">Play 2: Post-recall outreach</span>        <span class="term-pass">✓ ready</span>' },
-            { html: '  <span class="term-dim">→</span> <span class="term-label">Play 3: New QA hire trigger</span>         <span class="term-pass">✓ ready</span>' },
-            { html: '  <span class="term-dim">→</span> <span class="term-label">Proof-of-value docs</span>                <span class="term-pass">✓ attached</span>' },
-            { html: '  <span class="term-dim">→</span> <span class="term-label">Operator checklist</span>                 <span class="term-pass">✓ generated</span>' },
-            { html: '' },
-            { html: '<span class="term-pass">✓</span> <span class="term-value">Complete.</span> <span class="term-label">3 plays · 12 signals · 1 intelligence brief</span>' },
-            { html: '' },
-            { html: '<span class="term-prompt">$</span> <span class="term-cursor"></span>', isCursor: true },
-        ];
-
-        let terminalFired = false;
-        const terminalEl = document.getElementById('pipeline-terminal');
-        const terminalOutput = document.getElementById('terminal-output');
-
-        function runTerminal() {
-            if (terminalFired) return;
-            terminalFired = true;
-
-            terminalLines.forEach((line) => {
-                const div = document.createElement('div');
-                div.className = 'term-line';
-                div.innerHTML = line.html || '&nbsp;';
-                terminalOutput.appendChild(div);
-            });
-
-            const allLines = terminalOutput.querySelectorAll('.term-line');
-            let delay = 200;
-            allLines.forEach((el, i) => {
-                const isBlank = terminalLines[i].html === '';
-                const isPhase = terminalLines[i].html.includes('term-phase');
-                if (isPhase) delay += 120;
-                setTimeout(() => el.classList.add('visible'), delay);
-                delay += isBlank ? 30 : isPhase ? 80 : 55;
-            });
-        }
-
-        const termObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    runTerminal();
-                    termObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.3 });
-
-        if (terminalEl) termObserver.observe(terminalEl);
 
         // Nav scroll behavior
         const nav = document.querySelector('nav');
