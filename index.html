@@ -157,6 +157,12 @@
             color: #4A4A45;
         }
 
+        /* Scroll indicator bounce */
+        @keyframes gentle-bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(6px); }
+        }
+
         /* Check / X list markers */
         .list-check li::before {
             content: '→';
@@ -181,8 +187,8 @@
             <a href="#" class="font-display font-bold text-sm tracking-[0.2em] text-brand-text hover:text-brand-accent transition-colors">
                 THRESH
             </a>
-            <a href="https://cal.com/lucas-gfxkfd/30min" class="text-sm font-body font-semibold bg-brand-accent text-white px-5 py-2.5 rounded-lg hover:bg-brand-accent-hover btn-primary transition-all">
-                Book 15 Min
+            <a href="#contact" class="text-sm font-body font-semibold bg-brand-accent text-white px-5 py-2.5 rounded-lg hover:bg-brand-accent-hover btn-primary transition-all">
+                Show Me the Signal
             </a>
         </div>
     </nav>
@@ -190,7 +196,7 @@
     <main class="relative z-10">
 
         <!-- ===================== HERO ===================== -->
-        <section class="min-h-screen flex items-center justify-center px-6 pt-20">
+        <section class="min-h-screen flex flex-col items-center justify-center pb-24 sm:pb-32 px-6 pt-20">
             <div class="max-w-4xl mx-auto text-center">
                 <div class="reveal">
                     <p class="font-display text-xs tracking-[0.3em] text-brand-accent uppercase mb-8">Thresh</p>
@@ -207,7 +213,15 @@
                     <a href="#example" class="w-full sm:w-auto text-center font-body font-semibold bg-brand-accent text-white px-8 py-4 rounded-lg hover:bg-brand-accent-hover btn-primary transition-all text-base">
                         See a Real Example
                     </a>
+                    <a href="#contact" class="w-full sm:w-auto text-center font-body font-semibold border border-brand-accent text-brand-accent px-8 py-4 rounded-lg hover:bg-brand-accent hover:text-white btn-primary transition-all text-base">
+                        Show Me the Signal
+                    </a>
                 </div>
+                <a href="#example" class="mt-16 opacity-40 text-brand-muted transition-opacity hover:opacity-70" style="animation: gentle-bounce 2s ease-in-out infinite 1s;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </a>
             </div>
         </section>
 
@@ -275,6 +289,11 @@
                         <p class="text-brand-text text-base leading-relaxed mb-4">"Damn dude this is amazing. We need this a lot in my industry."</p>
                         <p class="text-brand-muted text-xs uppercase tracking-wider">Enterprise Rep · Truckstop</p>
                     </div>
+                </div>
+                <div class="reveal text-center mt-10">
+                    <a href="#contact" class="text-brand-accent hover:text-brand-accent-hover font-medium text-base transition-colors">
+                        Get Your First 10 Free →
+                    </a>
                 </div>
             </div>
         </section>
@@ -386,9 +405,13 @@
                     <p class="text-brand-muted text-base sm:text-lg mb-4 font-light leading-relaxed max-w-2xl mx-auto">
                         No pitch deck. No proposal. I just show you what the output looks like with your prospects, your market, your data.
                     </p>
-                    <p class="text-brand-text text-base sm:text-lg font-medium leading-relaxed max-w-2xl mx-auto">
+                    <p class="text-brand-text text-base sm:text-lg font-medium leading-relaxed max-w-2xl mx-auto mb-8">
                         If it books meetings, we talk about a monthly engagement.
                     </p>
+                    <p class="text-brand-muted text-sm mb-8">Delivered in 48 hours.</p>
+                    <a href="#contact" class="inline-block font-body font-semibold bg-brand-accent text-white px-8 py-4 rounded-lg hover:bg-brand-accent-hover btn-primary transition-all text-base">
+                        Show Me the Signal
+                    </a>
                 </div>
             </div>
         </section>
@@ -414,8 +437,40 @@
 
         <div class="divider max-w-6xl mx-auto"></div>
 
-        <!-- ===================== BOTTOM CTA ===================== -->
+        <!-- ===================== FAQ ===================== -->
         <section class="py-24 sm:py-32 px-6">
+            <div class="max-w-4xl mx-auto">
+                <div class="reveal">
+                    <p class="font-display text-xs tracking-[0.3em] text-brand-accent uppercase mb-4">Questions</p>
+                    <h2 class="font-display font-bold text-3xl sm:text-4xl tracking-tight mb-12">
+                        You're probably wondering.
+                    </h2>
+                </div>
+                <div class="space-y-8 stagger">
+                    <div class="reveal">
+                        <p class="font-display font-semibold text-brand-text text-base mb-2">What does it cost after the free 10?</p>
+                        <p class="text-brand-muted text-sm leading-relaxed">We'll discuss a monthly engagement based on your volume and market. No long-term contracts.</p>
+                    </div>
+                    <div class="reveal">
+                        <p class="font-display font-semibold text-brand-text text-base mb-2">How long does delivery take?</p>
+                        <p class="text-brand-muted text-sm leading-relaxed">48 hours from the time you tell me your market.</p>
+                    </div>
+                    <div class="reveal">
+                        <p class="font-display font-semibold text-brand-text text-base mb-2">What if my industry doesn't have public data?</p>
+                        <p class="text-brand-muted text-sm leading-relaxed">Some industries have more signal than others. That's what the free 10 is for — I'll tell you what I find, and if the data isn't there, you'll know before you spend anything.</p>
+                    </div>
+                    <div class="reveal">
+                        <p class="font-display font-semibold text-brand-text text-base mb-2">What do I actually get?</p>
+                        <p class="text-brand-muted text-sm leading-relaxed">A scored prospect list, decision-maker contacts, and ready-to-send messages built from each prospect's specific data. Plus the research behind it.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider max-w-6xl mx-auto"></div>
+
+        <!-- ===================== BOTTOM CTA ===================== -->
+        <section id="contact" class="py-24 sm:py-32 px-6 scroll-mt-20">
             <div class="max-w-3xl mx-auto">
                 <div class="reveal text-center mb-12">
                     <h2 class="font-display font-bold text-2xl sm:text-3xl md:text-4xl tracking-tight mb-4">
