@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','%%GTM_ID%%');</script>
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-XXXXXXX');</script>
     <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thresh — Signal-Based Outbound for Niche B2B</title>
-    <meta name="description" content="Signal-based outbound for B2B companies selling into regulated industries. I find public compliance data your prospects don't know is exposed, build scored lists, and write the messages.">
+    <meta name="description"
+        content="Signal-based outbound for B2B companies selling into regulated industries. I find public compliance data your prospects don't know is exposed, build scored lists, and write the messages.">
     <meta name="robots" content="index, follow">
     <meta name="google-site-verification" content="qUKtAo5uOe43PVS3e17HTVSnfXDc0atXlYjwzUjEEx4" />
     <link rel="canonical" href="https://runthresh.com/">
@@ -19,14 +24,16 @@
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Thresh — Signal-Based Outbound for Niche B2B">
-    <meta property="og:description" content="I find public compliance data your prospects don't know is exposed, build scored lists, and write the messages. First 10 prospects free.">
+    <meta property="og:description"
+        content="I find public compliance data your prospects don't know is exposed, build scored lists, and write the messages. First 10 prospects free.">
     <meta property="og:url" content="https://runthresh.com/">
     <meta property="og:site_name" content="Thresh">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Thresh — Signal-Based Outbound for Niche B2B">
-    <meta name="twitter:description" content="I find public compliance data your prospects don't know is exposed, build scored lists, and write the messages. First 10 prospects free.">
+    <meta name="twitter:description"
+        content="I find public compliance data your prospects don't know is exposed, build scored lists, and write the messages. First 10 prospects free.">
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -92,7 +99,9 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Syne:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Syne:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
     <script>
         tailwind.config = {
@@ -129,34 +138,86 @@
             opacity: 0;
             transform: translateY(28px);
             transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-                        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+                transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
         }
+
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
 
         /* Stagger children */
-        .stagger > .reveal:nth-child(1) { transition-delay: 0s; }
-        .stagger > .reveal:nth-child(2) { transition-delay: 0.12s; }
-        .stagger > .reveal:nth-child(3) { transition-delay: 0.24s; }
-        .stagger > .reveal:nth-child(4) { transition-delay: 0.36s; }
+        .stagger>.reveal:nth-child(1) {
+            transition-delay: 0s;
+        }
+
+        .stagger>.reveal:nth-child(2) {
+            transition-delay: 0.12s;
+        }
+
+        .stagger>.reveal:nth-child(3) {
+            transition-delay: 0.24s;
+        }
+
+        .stagger>.reveal:nth-child(4) {
+            transition-delay: 0.36s;
+        }
 
         /* Nav scroll state */
         nav {
             transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
+
         nav.scrolled {
-            background-color: rgba(10, 10, 10, 0.92);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            box-shadow: 0 1px 0 0 #1E1E1E;
+            background-color: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border-bottom-color: rgba(212, 98, 43, 0.15);
+            box-shadow: 0 4px 40px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Hero Glow */
+        .hero-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-100%, -50%);
+            /* Offset slightly left */
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle at center, rgba(212, 98, 43, 0.15) 0%, transparent 70%);
+            filter: blur(80px);
+            pointer-events: none;
+            z-index: -1;
+            animation: pulse-glow 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+
+            0%,
+            100% {
+                opacity: 0.4;
+                transform: translate(-100%, -50%) scale(1);
+            }
+
+            50% {
+                opacity: 0.7;
+                transform: translate(-95%, -45%) scale(1.1);
+            }
+        }
+
+        /* Card enhancement */
+        .bg-brand-surface {
+            background-color: rgba(20, 20, 20, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(36, 36, 36, 0.8);
         }
 
         /* Card hover */
         .card-lift {
             transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
         }
+
         .card-lift:hover {
             border-color: #D4622B;
             box-shadow: 0 4px 24px rgba(212, 98, 43, 0.08);
@@ -167,8 +228,10 @@
         .btn-primary {
             transition: all 0.3s ease;
         }
+
         .btn-primary:hover {
-            box-shadow: 0 4px 20px rgba(212, 98, 43, 0.25);
+            box-shadow: 0 0 25px rgba(212, 98, 43, 0.4);
+            transform: translateY(-1px);
         }
 
         /* Divider */
@@ -190,6 +253,7 @@
             border-radius: 12px;
             overflow: hidden;
         }
+
         .email-bar {
             display: flex;
             align-items: center;
@@ -198,26 +262,42 @@
             background: #181818;
             border-bottom: 1px solid #242424;
         }
+
         .email-dot {
             width: 10px;
             height: 10px;
             border-radius: 50%;
         }
-        .email-dot:nth-child(1) { background: #E54D42; opacity: 0.8; }
-        .email-dot:nth-child(2) { background: #E8B44D; opacity: 0.8; }
-        .email-dot:nth-child(3) { background: #5CB85C; opacity: 0.8; }
+
+        .email-dot:nth-child(1) {
+            background: #E54D42;
+            opacity: 0.8;
+        }
+
+        .email-dot:nth-child(2) {
+            background: #E8B44D;
+            opacity: 0.8;
+        }
+
+        .email-dot:nth-child(3) {
+            background: #5CB85C;
+            opacity: 0.8;
+        }
+
         .email-label {
             font-size: 11px;
             color: #4A4A45;
             letter-spacing: 0.05em;
             margin-left: 8px;
         }
+
         .email-body {
             padding: 24px 28px;
             font-size: 14px;
             line-height: 1.8;
             color: #C8C6C0;
         }
+
         @media (max-width: 640px) {
             .email-body {
                 padding: 16px 18px;
@@ -239,18 +319,27 @@
             width: 100%;
             transition: border-color 0.3s ease;
         }
+
         .form-input:focus {
             outline: none;
             border-color: #D4622B;
         }
+
         .form-input::placeholder {
             color: #4A4A45;
         }
 
         /* Scroll indicator bounce */
         @keyframes gentle-bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(6px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(6px);
+            }
         }
 
         /* Check / X list markers */
@@ -260,6 +349,7 @@
             font-weight: 700;
             margin-right: 12px;
         }
+
         .list-x li::before {
             content: '✕';
             color: #4A4A45;
@@ -271,22 +361,25 @@
 
 <body class="bg-brand-bg text-brand-text font-body antialiased">
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=%%GTM_ID%%"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50 border-b border-transparent transition-all duration-300">
         <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="#" class="font-display font-bold text-sm tracking-[0.2em] text-brand-text hover:text-brand-accent transition-colors z-50 relative">
+            <a href="#"
+                class="font-display font-bold text-sm tracking-[0.2em] text-brand-text hover:text-brand-accent transition-colors z-50 relative">
                 THRESH
             </a>
-            
+
             <div class="flex items-center gap-4 z-50 relative">
-                <a href="#contact" class="hidden sm:inline-block text-sm font-body font-semibold bg-brand-accent text-white px-5 py-2.5 rounded-lg hover:bg-brand-accent-hover btn-primary transition-all">
+                <a href="#contact"
+                    class="hidden sm:inline-block text-sm font-body font-semibold bg-brand-accent text-white px-5 py-2.5 rounded-lg hover:bg-brand-accent-hover btn-primary transition-all">
                     Show Me the Signal
                 </a>
-                <a href="#contact" class="sm:hidden text-xs font-body font-semibold bg-brand-accent text-white px-4 py-2 rounded-lg hover:bg-brand-accent-hover btn-primary transition-all">
+                <a href="#contact"
+                    class="sm:hidden text-xs font-body font-semibold bg-brand-accent text-white px-4 py-2 rounded-lg hover:bg-brand-accent-hover btn-primary transition-all">
                     Get Signal
                 </a>
             </div>
@@ -296,29 +389,40 @@
     <main class="relative z-10">
 
         <!-- ===================== HERO ===================== -->
-        <section class="min-h-screen flex flex-col items-center justify-center pb-12 sm:pb-32 px-6 pt-20">
-            <div class="max-w-4xl mx-auto text-center">
+        <section
+            class="min-h-screen flex flex-col items-center justify-center pb-12 sm:pb-32 px-6 pt-20 relative overflow-hidden">
+            <div class="hero-glow"></div>
+            <div class="max-w-4xl mx-auto text-center relative z-10">
                 <div class="reveal">
                     <p class="font-display text-xs tracking-[0.3em] text-brand-accent uppercase mb-8">Thresh</p>
                 </div>
-                <h1 class="reveal font-display font-800 text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight mb-8">
+                <h1
+                    class="reveal font-display font-800 text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight mb-8">
                     Your prospects have problems<br class="hidden sm:block">
                     <span class="headline-accent">they don't know are public.</span><br class="hidden sm:block">
                     I find them.
                 </h1>
-                <p class="reveal font-body text-lg sm:text-xl text-brand-muted max-w-2xl mx-auto mb-12 leading-relaxed font-light">
-                    Signal-based outbound for B2B companies selling into regulated, licensed, or inspected industries — where public data creates an unfair advantage. I find the trigger, build the list, and write the messages.
+                <p
+                    class="reveal font-body text-lg sm:text-xl text-brand-muted max-w-2xl mx-auto mb-12 leading-relaxed font-light">
+                    Signal-based outbound for B2B companies selling into regulated, licensed, or inspected industries —
+                    where public data creates an unfair advantage. I find the trigger, build the list, and write the
+                    messages.
                 </p>
                 <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <a href="#example" class="w-full sm:w-auto text-center font-body font-semibold bg-brand-accent text-white px-8 py-4 rounded-lg hover:bg-brand-accent-hover btn-primary transition-all text-base">
+                    <a href="#example"
+                        class="w-full sm:w-auto text-center font-body font-semibold bg-brand-accent text-white px-8 py-4 rounded-lg hover:bg-brand-accent-hover btn-primary transition-all text-base">
                         See a Real Example
                     </a>
-                    <a href="#contact" class="w-full sm:w-auto text-center font-body font-semibold border border-brand-accent text-brand-accent px-8 py-4 rounded-lg hover:bg-brand-accent hover:text-white btn-primary transition-all text-base">
+                    <a href="#contact"
+                        class="w-full sm:w-auto text-center font-body font-semibold border border-brand-accent text-brand-accent px-8 py-4 rounded-lg hover:bg-brand-accent hover:text-white btn-primary transition-all text-base">
                         Show Me the Signal
                     </a>
                 </div>
-                <a href="#example" class="hidden sm:block mt-16 opacity-40 text-brand-muted transition-opacity hover:opacity-70" style="animation: gentle-bounce 2s ease-in-out infinite 1s;">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <a href="#example"
+                    class="hidden sm:block mt-16 opacity-40 text-brand-muted transition-opacity hover:opacity-70"
+                    style="animation: gentle-bounce 2s ease-in-out infinite 1s;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                 </a>
@@ -331,19 +435,22 @@
         <section id="example" class="py-24 sm:py-32 px-6 scroll-mt-20">
             <div class="max-w-4xl mx-auto">
                 <div class="reveal">
-                    <p class="font-display text-xs tracking-[0.3em] text-brand-accent uppercase mb-4">What This Looks Like</p>
+                    <p class="font-display text-xs tracking-[0.3em] text-brand-accent uppercase mb-4">What This Looks
+                        Like</p>
                     <h2 class="font-display font-bold text-3xl sm:text-4xl tracking-tight mb-6 max-w-3xl">
                         What this looks like in practice.
                     </h2>
                     <p class="text-brand-muted text-lg leading-relaxed max-w-3xl mb-12 font-light">
-                        A commercial building technology company needed to reach facilities leaders at properties facing millions in regulatory penalties. Here's what I built using nothing but public data.
+                        A commercial building technology company needed to reach facilities leaders at properties facing
+                        millions in regulatory penalties. Here's what I built using nothing but public data.
                     </p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10 reveal">
                     <!-- Before: Generic email -->
                     <div>
-                        <p class="font-display text-xs tracking-[0.2em] text-brand-muted uppercase mb-4">Without the data, you're stuck writing this.</p>
+                        <p class="font-display text-xs tracking-[0.2em] text-brand-muted uppercase mb-4">Without the
+                            data, you're stuck writing this.</p>
                         <div class="email-card h-full">
                             <div class="email-bar">
                                 <span class="email-dot"></span>
@@ -354,9 +461,12 @@
                             <div class="email-body">
                                 <p>Hi [First Name],</p>
                                 <br>
-                                <p>I'm reaching out because we help companies like yours reduce energy costs and hit compliance targets. A lot of building operators in New York are dealing with new regulations and aren't sure where they stand.</p>
+                                <p>I'm reaching out because we help companies like yours reduce energy costs and hit
+                                    compliance targets. A lot of building operators in New York are dealing with new
+                                    regulations and aren't sure where they stand.</p>
                                 <br>
-                                <p>We've worked with similar companies to identify savings opportunities and build a path to compliance. I'd love to share how we could help your team.</p>
+                                <p>We've worked with similar companies to identify savings opportunities and build a
+                                    path to compliance. I'd love to share how we could help your team.</p>
                                 <br>
                                 <p>Do you have 15 minutes this week?</p>
                             </div>
@@ -365,7 +475,8 @@
 
                     <!-- After: Data-driven email -->
                     <div>
-                        <p class="font-display text-xs tracking-[0.2em] text-brand-accent uppercase mb-4">With the data, your rep sends this.</p>
+                        <p class="font-display text-xs tracking-[0.2em] text-brand-accent uppercase mb-4">With the data,
+                            your rep sends this.</p>
                         <div class="email-card h-full">
                             <div class="email-bar">
                                 <span class="email-dot"></span>
@@ -374,9 +485,14 @@
                                 <span class="email-label">outbound</span>
                             </div>
                             <div class="email-body">
-                                <p>277 Park Avenue scored 14 on ENERGY STAR in its most recent benchmarking report — that's bottom 14% of comparable US office buildings. Under LL97, the building's reported emissions put the estimated annual penalty at $1.54 million today, nearly doubling when the 2030 limits take effect.</p>
+                                <p>277 Park Avenue scored 14 on ENERGY STAR in its most recent benchmarking report —
+                                    that's bottom 14% of comparable US office buildings. Under LL97, the building's
+                                    reported emissions put the estimated annual penalty at $1.54 million today, nearly
+                                    doubling when the 2030 limits take effect.</p>
                                 <br>
-                                <p>I built a compliance exposure projection specific to 277 Park — penalty math by compliance period, including the threshold cliff in 2030. The full analysis is attached.</p>
+                                <p>I built a compliance exposure projection specific to 277 Park — penalty math by
+                                    compliance period, including the threshold cliff in 2030. The full analysis is
+                                    attached.</p>
                                 <br>
                                 <p>Does this match what your team is modeling for LL97?</p>
                             </div>
@@ -386,7 +502,9 @@
 
                 <div class="reveal">
                     <p class="text-brand-muted text-sm sm:text-base leading-relaxed">
-                        Every number in that email traces to a public source — NYC benchmarking data, published penalty formulas, ENERGY STAR scoring. No guessing. No templates. The prospect can verify every claim in 5 minutes.
+                        Every number in that email traces to a public source — NYC benchmarking data, published penalty
+                        formulas, ENERGY STAR scoring. No guessing. No templates. The prospect can verify every claim in
+                        5 minutes.
                     </p>
                 </div>
             </div>
@@ -396,24 +514,29 @@
         <section class="py-16 sm:py-20 px-6">
             <div class="max-w-5xl mx-auto">
                 <div class="reveal">
-                    <p class="font-display text-xs tracking-[0.3em] text-brand-accent uppercase mb-10 text-center">What Reps Say When They See It</p>
+                    <p class="font-display text-xs tracking-[0.3em] text-brand-accent uppercase mb-10 text-center">What
+                        Reps Say When They See It</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 stagger">
                     <div class="reveal bg-brand-surface border border-brand-border rounded-xl p-6">
-                        <p class="text-brand-text text-base leading-relaxed mb-4">"I would absolutely send that to a customer."</p>
+                        <p class="text-brand-text text-base leading-relaxed mb-4">"I would absolutely send that to a
+                            customer."</p>
                         <p class="text-brand-muted text-xs uppercase tracking-wider">Enterprise Rep · Samsara</p>
                     </div>
                     <div class="reveal bg-brand-surface border border-brand-border rounded-xl p-6">
-                        <p class="text-brand-text text-base leading-relaxed mb-4">"All of that is insanely actionable. Can you run it for another company?"</p>
+                        <p class="text-brand-text text-base leading-relaxed mb-4">"All of that is insanely actionable.
+                            Can you run it for another company?"</p>
                         <p class="text-brand-muted text-xs uppercase tracking-wider">Enterprise Rep · Trane</p>
                     </div>
                     <div class="reveal bg-brand-surface border border-brand-border rounded-xl p-6">
-                        <p class="text-brand-text text-base leading-relaxed mb-4">"Damn dude this is amazing. We need this a lot in my industry."</p>
+                        <p class="text-brand-text text-base leading-relaxed mb-4">"Damn dude this is amazing. We need
+                            this a lot in my industry."</p>
                         <p class="text-brand-muted text-xs uppercase tracking-wider">Enterprise Rep · Truckstop</p>
                     </div>
                 </div>
                 <div class="reveal text-center mt-10">
-                    <a href="#contact" class="text-brand-accent hover:text-brand-accent-hover font-medium text-base transition-colors">
+                    <a href="#contact"
+                        class="text-brand-accent hover:text-brand-accent-hover font-medium text-base transition-colors">
                         Get Your First 10 Free →
                     </a>
                 </div>
@@ -436,21 +559,26 @@
                         <p class="text-brand-accent font-display font-bold text-sm mb-3">01</p>
                         <p class="font-display font-bold text-lg mb-3 text-brand-text">I find the signal.</p>
                         <p class="text-brand-muted text-sm leading-relaxed">
-                            I identify a specific public data trigger that proves your prospect has a problem right now. Federal safety records, building compliance scores, permit filings, regulatory deadlines. Not intent data. Not job postings. Undeniable, verifiable events.
+                            I identify a specific public data trigger that proves your prospect has a problem right now.
+                            Federal safety records, building compliance scores, permit filings, regulatory deadlines.
+                            Not intent data. Not job postings. Undeniable, verifiable events.
                         </p>
                     </div>
                     <div class="reveal bg-brand-surface border border-brand-border rounded-xl p-8 card-lift">
                         <p class="text-brand-accent font-display font-bold text-sm mb-3">02</p>
                         <p class="font-display font-bold text-lg mb-3 text-brand-text">I build the list.</p>
                         <p class="text-brand-muted text-sm leading-relaxed">
-                            I pull prospects experiencing that signal, enrich decision-maker contacts, and score them by severity. Every record has a source you can click through and verify.
+                            I pull prospects experiencing that signal, enrich decision-maker contacts, and score them by
+                            severity. Every record has a source you can click through and verify.
                         </p>
                     </div>
                     <div class="reveal bg-brand-surface border border-brand-border rounded-xl p-8 card-lift">
                         <p class="text-brand-accent font-display font-bold text-sm mb-3">03</p>
                         <p class="font-display font-bold text-lg mb-3 text-brand-text">I write the messages.</p>
                         <p class="text-brand-muted text-sm leading-relaxed">
-                            Each prospect gets a 3-4 sentence message built from their specific data. No templates. No "I noticed your company is growing." One insight per message that makes them think "how did you know that?"
+                            Each prospect gets a 3-4 sentence message built from their specific data. No templates. No
+                            "I noticed your company is growing." One insight per message that makes them think "how did
+                            you know that?"
                         </p>
                     </div>
                 </div>
@@ -466,20 +594,24 @@
                     <!-- Who It's For -->
                     <div>
                         <div class="reveal">
-                            <p class="font-display text-xs tracking-[0.3em] text-brand-accent uppercase mb-4">Who It's For</p>
+                            <p class="font-display text-xs tracking-[0.3em] text-brand-accent uppercase mb-4">Who It's
+                                For</p>
                             <h2 class="font-display font-bold text-2xl sm:text-3xl tracking-tight mb-8">
                                 Built for these companies.
                             </h2>
                         </div>
                         <ul class="reveal list-check space-y-5">
                             <li class="flex text-brand-muted text-sm leading-relaxed">
-                                B2B companies whose buyers face regulatory pressure, safety compliance, or infrastructure deadlines — and where public data can prove it
+                                B2B companies whose buyers face regulatory pressure, safety compliance, or
+                                infrastructure deadlines — and where public data can prove it
                             </li>
                             <li class="flex text-brand-muted text-sm leading-relaxed">
-                                Vertical SaaS founders doing founder-led sales who don't have time to build this themselves
+                                Vertical SaaS founders doing founder-led sales who don't have time to build this
+                                themselves
                             </li>
                             <li class="flex text-brand-muted text-sm leading-relaxed">
-                                Sales leaders building an outbound motion who need their reps armed with something no competitor is sending
+                                Sales leaders building an outbound motion who need their reps armed with something no
+                                competitor is sending
                             </li>
                         </ul>
                     </div>
@@ -487,20 +619,25 @@
                     <!-- Who It's Not For -->
                     <div>
                         <div class="reveal">
-                            <p class="font-display text-xs tracking-[0.3em] text-brand-faint uppercase mb-4">Who It's Not For</p>
-                            <h2 class="font-display font-bold text-2xl sm:text-3xl tracking-tight mb-8 text-brand-muted">
+                            <p class="font-display text-xs tracking-[0.3em] text-brand-faint uppercase mb-4">Who It's
+                                Not For</p>
+                            <h2
+                                class="font-display font-bold text-2xl sm:text-3xl tracking-tight mb-8 text-brand-muted">
                                 Not the right fit for these.
                             </h2>
                         </div>
                         <ul class="reveal list-x space-y-5">
                             <li class="flex text-brand-muted text-sm leading-relaxed">
-                                Horizontal SaaS selling to other tech companies — your buyers are too sophisticated and the data advantage is thin
+                                Horizontal SaaS selling to other tech companies — your buyers are too sophisticated and
+                                the data advantage is thin
                             </li>
                             <li class="flex text-brand-muted text-sm leading-relaxed">
-                                Companies that need someone to manage their CRM, inbox, or SDR team — I deliver intelligence and messages, not execution
+                                Companies that need someone to manage their CRM, inbox, or SDR team — I deliver
+                                intelligence and messages, not execution
                             </li>
                             <li class="flex text-brand-muted text-sm leading-relaxed">
-                                "Let's test some AI outbound" budgets — if the problem isn't obvious and the data doesn't exist, this isn't the right fit
+                                "Let's test some AI outbound" budgets — if the problem isn't obvious and the data
+                                doesn't exist, this isn't the right fit
                             </li>
                         </ul>
                     </div>
@@ -519,16 +656,19 @@
                         Your first 10 prospects are free.
                     </h2>
                     <p class="text-brand-muted text-base sm:text-lg mb-4 font-light leading-relaxed max-w-2xl mx-auto">
-                        I'll pick one signal in your market, pull 10 companies experiencing it right now, enrich the decision-makers, and write the messages. You send them.
+                        I'll pick one signal in your market, pull 10 companies experiencing it right now, enrich the
+                        decision-makers, and write the messages. You send them.
                     </p>
                     <p class="text-brand-muted text-base sm:text-lg mb-4 font-light leading-relaxed max-w-2xl mx-auto">
-                        No pitch deck. No proposal. I just show you what the output looks like with your prospects, your market, your data.
+                        No pitch deck. No proposal. I just show you what the output looks like with your prospects, your
+                        market, your data.
                     </p>
                     <p class="text-brand-text text-base sm:text-lg font-medium leading-relaxed max-w-2xl mx-auto mb-8">
                         If it books meetings, we talk about a monthly engagement.
                     </p>
                     <p class="text-brand-muted text-sm mb-8">Delivered in 48 hours.</p>
-                    <a href="#contact" class="inline-block font-body font-semibold bg-brand-accent text-white px-8 py-4 rounded-lg hover:bg-brand-accent-hover btn-primary transition-all text-base">
+                    <a href="#contact"
+                        class="inline-block font-body font-semibold bg-brand-accent text-white px-8 py-4 rounded-lg hover:bg-brand-accent-hover btn-primary transition-all text-base">
                         Show Me the Signal
                     </a>
                 </div>
@@ -545,10 +685,13 @@
                 </div>
                 <div class="reveal max-w-3xl">
                     <p class="text-brand-text text-lg leading-relaxed font-light mb-6">
-                        Lucas Linares. Ex-Clay GTM Engineer. I spent 4 years carrying quota (SDR → Founding AE) at Tonic.ai, Rutter, and Clay before I started building the systems I wished I'd had.
+                        Lucas Linares. Ex-Clay GTM Engineer. I spent 4 years carrying quota (SDR → Founding AE) at
+                        Tonic.ai, Rutter, and Clay before I started building the systems I wished I'd had.
                     </p>
                     <p class="text-brand-text text-lg leading-relaxed font-light">
-                        I built Thresh to do in hours what used to take a team weeks: signal-based outbound for companies whose buyers have real, provable, undeniable problems — surfaced by data those buyers don't know is public.
+                        I built Thresh to do in hours what used to take a team weeks: signal-based outbound for
+                        companies whose buyers have real, provable, undeniable problems — surfaced by data those buyers
+                        don't know is public.
                     </p>
                 </div>
             </div>
@@ -567,20 +710,29 @@
                 </div>
                 <div class="space-y-8 stagger">
                     <div class="reveal">
-                        <p class="font-display font-semibold text-brand-text text-base mb-2">What does it cost after the free 10?</p>
-                        <p class="text-brand-muted text-sm leading-relaxed">We'll discuss a monthly engagement based on your volume and market. No long-term contracts.</p>
+                        <p class="font-display font-semibold text-brand-text text-base mb-2">What does it cost after the
+                            free 10?</p>
+                        <p class="text-brand-muted text-sm leading-relaxed">We'll discuss a monthly engagement based on
+                            your volume and market. No long-term contracts.</p>
                     </div>
                     <div class="reveal">
-                        <p class="font-display font-semibold text-brand-text text-base mb-2">How long does delivery take?</p>
-                        <p class="text-brand-muted text-sm leading-relaxed">48 hours from the time you tell me your market.</p>
+                        <p class="font-display font-semibold text-brand-text text-base mb-2">How long does delivery
+                            take?</p>
+                        <p class="text-brand-muted text-sm leading-relaxed">48 hours from the time you tell me your
+                            market.</p>
                     </div>
                     <div class="reveal">
-                        <p class="font-display font-semibold text-brand-text text-base mb-2">What if my industry doesn't have public data?</p>
-                        <p class="text-brand-muted text-sm leading-relaxed">Some industries have more signal than others. That's what the free 10 is for — I'll tell you what I find, and if the data isn't there, you'll know before you spend anything.</p>
+                        <p class="font-display font-semibold text-brand-text text-base mb-2">What if my industry doesn't
+                            have public data?</p>
+                        <p class="text-brand-muted text-sm leading-relaxed">Some industries have more signal than
+                            others. That's what the free 10 is for — I'll tell you what I find, and if the data isn't
+                            there, you'll know before you spend anything.</p>
                     </div>
                     <div class="reveal">
                         <p class="font-display font-semibold text-brand-text text-base mb-2">What do I actually get?</p>
-                        <p class="text-brand-muted text-sm leading-relaxed">A scored prospect list, decision-maker contacts, and ready-to-send messages built from each prospect's specific data. Plus the research behind it.</p>
+                        <p class="text-brand-muted text-sm leading-relaxed">A scored prospect list, decision-maker
+                            contacts, and ready-to-send messages built from each prospect's specific data. Plus the
+                            research behind it.</p>
                     </div>
                 </div>
             </div>
@@ -602,27 +754,35 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                         <div>
                             <label for="name" class="block text-sm text-brand-muted mb-2">Name</label>
-                            <input type="text" id="name" name="name" placeholder="Jane Smith" required class="form-input">
+                            <input type="text" id="name" name="name" placeholder="Jane Smith" required
+                                class="form-input">
                         </div>
                         <div>
                             <label for="email" class="block text-sm text-brand-muted mb-2">Email</label>
-                            <input type="email" id="email" name="email" placeholder="jane@company.com" required class="form-input">
+                            <input type="email" id="email" name="email" placeholder="jane@company.com" required
+                                class="form-input">
                         </div>
                     </div>
                     <div>
                         <label for="company" class="block text-sm text-brand-muted mb-2">Company</label>
-                        <input type="text" id="company" name="company" placeholder="Acme Corp" required class="form-input">
+                        <input type="text" id="company" name="company" placeholder="Acme Corp" required
+                            class="form-input">
                     </div>
                     <div>
-                        <label for="what_you_sell" class="block text-sm text-brand-muted mb-2">What you sell <span class="text-brand-faint">(optional)</span></label>
-                        <input type="text" id="what_you_sell" name="what_you_sell" placeholder="Building automation software" class="form-input">
+                        <label for="what_you_sell" class="block text-sm text-brand-muted mb-2">What you sell <span
+                                class="text-brand-faint">(optional)</span></label>
+                        <input type="text" id="what_you_sell" name="what_you_sell"
+                            placeholder="Building automation software" class="form-input">
                     </div>
                     <div>
-                        <label for="who_you_sell_to" class="block text-sm text-brand-muted mb-2">Who you sell to <span class="text-brand-faint">(optional)</span></label>
-                        <input type="text" id="who_you_sell_to" name="who_you_sell_to" placeholder="Facilities managers at commercial real estate" class="form-input">
+                        <label for="who_you_sell_to" class="block text-sm text-brand-muted mb-2">Who you sell to <span
+                                class="text-brand-faint">(optional)</span></label>
+                        <input type="text" id="who_you_sell_to" name="who_you_sell_to"
+                            placeholder="Facilities managers at commercial real estate" class="form-input">
                     </div>
                     <div class="pt-2">
-                        <button type="submit" class="w-full font-body font-semibold bg-brand-accent text-white px-8 py-4 rounded-lg hover:bg-brand-accent-hover btn-primary transition-all text-base">
+                        <button type="submit"
+                            class="w-full font-body font-semibold bg-brand-accent text-white px-8 py-4 rounded-lg hover:bg-brand-accent-hover btn-primary transition-all text-base">
                             See What I'd Find
                         </button>
                     </div>
@@ -632,13 +792,15 @@
                 <div id="form-success" class="reveal text-center hidden">
                     <div class="bg-brand-surface border border-brand-border rounded-xl p-10">
                         <p class="text-brand-accent font-display font-bold text-lg mb-3">Got it.</p>
-                        <p class="text-brand-muted text-base">I'll look at your market and reply within 24 hours with what I'd pull.</p>
+                        <p class="text-brand-muted text-base">I'll look at your market and reply within 24 hours with
+                            what I'd pull.</p>
                     </div>
                 </div>
 
                 <div class="reveal text-center mt-8">
                     <p class="text-brand-muted text-sm mb-3">Or skip the form</p>
-                    <a href="https://cal.com/lucas-gfxkfd/30min" class="inline-block text-brand-accent hover:text-brand-accent-hover font-medium text-sm transition-colors">
+                    <a href="https://cal.com/lucas-gfxkfd/30min"
+                        class="inline-block text-brand-accent hover:text-brand-accent-hover font-medium text-sm transition-colors">
                         Book 30 minutes →
                     </a>
                 </div>
@@ -651,15 +813,18 @@
     <footer class="border-t border-brand-border px-6 py-12 relative z-10">
         <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
             <div class="flex flex-col sm:flex-row items-center gap-4">
-                <a href="mailto:lucas.linares@runthresh.com" class="text-sm text-brand-muted hover:text-brand-accent transition-colors">
+                <a href="mailto:lucas.linares@runthresh.com"
+                    class="text-sm text-brand-muted hover:text-brand-accent transition-colors">
                     lucas.linares@runthresh.com
                 </a>
                 <span class="hidden sm:inline text-brand-faint">·</span>
-                <a href="https://www.linkedin.com/in/lucas-linares1/" class="text-sm text-brand-muted hover:text-brand-accent transition-colors">
+                <a href="https://www.linkedin.com/in/lucas-linares1/"
+                    class="text-sm text-brand-muted hover:text-brand-accent transition-colors">
                     LinkedIn
                 </a>
                 <span class="hidden sm:inline text-brand-faint">·</span>
-                <a href="https://github.com/lucasvibecoder" class="text-sm text-brand-muted hover:text-brand-accent transition-colors">
+                <a href="https://github.com/lucasvibecoder"
+                    class="text-sm text-brand-muted hover:text-brand-accent transition-colors">
                     GitHub
                 </a>
                 <span class="hidden sm:inline text-brand-faint">·</span>
@@ -690,7 +855,7 @@
         const form = document.getElementById('contact-form');
         const formSuccess = document.getElementById('form-success');
         if (form) {
-            form.addEventListener('submit', function(e) {
+            form.addEventListener('submit', function (e) {
                 e.preventDefault();
                 const data = new FormData(form);
                 fetch(form.action, {
@@ -731,4 +896,5 @@
     <script defer src="/_vercel/speed-insights/script.js"></script>
 
 </body>
+
 </html>
