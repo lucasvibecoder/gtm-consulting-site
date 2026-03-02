@@ -46,6 +46,41 @@ Signal-based outbound intelligence. We find public data that proves a company's 
 | Geography | US-based (federal databases are US-centric for now) |
 | GTM maturity | Has a product, has some customers, doing outbound but results are mediocre. Not pre-product. Not enterprise with a 20-person sales org. |
 
+### Stage Model
+
+Companies go through a predictable sequence from founder-led sales to outbound infrastructure. Thresh's sweet spot is **Stage 2**.
+
+| Stage | ARR Range | Team Shape | What's Happening | Thresh Fit |
+|-------|-----------|------------|-----------------|---------------|
+| **0 — Founder-led** | $0-$250K | Founder is the sales team | Personal network, warm intros, occasional cold email from Gmail | Too early |
+| **1 — First sales hire** | $250K-$1M | Founder + 1 SDR or AE | First outbound attempts, basic CRM, manual everything | Getting warm |
+| **2 — Small team, no ops** | $1M-$5M | 2-8 reps, VP Sales just arrived, no ops person | Outbound exists but is manual and inconsistent. VP Sales is "doing it all" — strategy, hiring, prospecting, closing, AND building infrastructure. Reps spend ~33% of time actually selling. | **SWEET SPOT** |
+| **3 — First ops hire** | $3M-$10M | Sales team + first RevOps/Sales Ops person | CRM cleanup, reporting, pipeline management — but still no signal-based outbound or intelligence layer | Still good |
+| **4 — GTM Engineer** | $10M+ | Proven GTM motion, 10+ tools | Decided to build in-house. Has named the problem. | Too late |
+
+**Key data point:** Only 128 GTM Engineer job posts appeared in a 3-month window in 2025 — one for every 92 SDR positions. ~45% of those titled "GTM Engineer" are actually agencies/consultants. (Source: Kyle Poyar / Growth Unhinged)
+
+### Observable Signals (how to find Stage 2 companies)
+
+#### Tier 1 — Strongest leading indicators
+
+1. **VP Sales / Head of Sales hired in last 6 months** — This person arrives, discovers there's no playbook, no ops support, no outbound infrastructure. They ARE the buyer. Detectable via LinkedIn job changes.
+2. **First SDR/BDR posted or just hired** — Company committed to outbound but has zero systems to support it. The SDR is doing everything manually. Detectable via TheirStack, LinkedIn, job boards.
+3. **Series A in last 90 days with "scale sales" or "go-to-market" in the press release** — Money + growth mandate + nothing built yet. Trigger-based outreach after funding yields 4x higher conversions. Detectable via Crunchbase, PredictLeads.
+
+#### Tier 2 — Supporting signals
+
+4. **"Outbound" buried in an AE job description** — No dedicated outbound function. AEs are expected to self-source leads.
+5. **First RevOps/Sales Ops posting** — Manual processes just broke. They know something is wrong but are solving with headcount, not intelligence.
+6. **Job posting mentions Clay/Apollo/Outreach as "nice to have"** — Exploring outbound tools, hasn't built systems yet.
+7. **Recently adopted HubSpot or Salesforce** — Formalizing CRM = starting to think about process. (Detectable via BuiltWith, Wappalyzer.)
+
+#### Tier 3 — Behavioral / harder to detect
+
+8. **Founder still doing demos** — Visible on LinkedIn activity, Calendly links, conference speaking.
+9. **Tried and abandoned an outbound agency** — Frustrated buyer, ready for a different approach. Sometimes visible in LinkedIn posts/comments.
+10. **Posting on LinkedIn/Reddit about outbound challenges** — Founders sharing struggles publicly.
+
 ### Qualifying Signals (how we know they're ready to buy)
 
 | Signal | Why it matters |
@@ -156,3 +191,13 @@ Before any engagement, answer these five questions:
 5. **Can they pay $3-5K/month after the free sample?** (If the budget isn't there → friendly no, revisit later)
 
 If all five are yes, take the engagement. If any are no, either fix the blocker first or walk.
+
+---
+
+## System
+
+- Deliverables built using gtm-alpha engine at `/projects/gtm-alpha`
+- Run outputs: `gtm-alpha/runs/{domain}/`
+- Data source registry: `gtm-alpha/contracts/data-source-registry.md`
+- Outbound pipeline: `outbound/pipeline.md`
+- Prospecting queries: `outbound/prospecting-queries.md`
