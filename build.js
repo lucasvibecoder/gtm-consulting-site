@@ -18,6 +18,17 @@ if (fs.existsSync(assetsSrc)) {
     console.log('[build] Copied assets/ to public/assets/');
 }
 
+// Copy other static root files
+const staticFiles = ['robots.txt', 'sitemap.xml'];
+staticFiles.forEach(file => {
+    const src = path.join(__dirname, file);
+    const dest = path.join(distDir, file);
+    if (fs.existsSync(src)) {
+        fs.copyFileSync(src, dest);
+        console.log(`[build] Copied ${file} -> public/${file}`);
+    }
+});
+
 function processFile(file) {
     const srcPath = path.join(__dirname, file);
     const destPath = path.join(distDir, file);
