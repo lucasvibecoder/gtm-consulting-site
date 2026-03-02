@@ -386,12 +386,12 @@
 
         /* Form inputs */
         .form-input {
-            background: #111111;
-            border: 1px solid #242424;
+            background: #FAFAFA;
+            border: 1px solid #D8D6CD;
             border-radius: 8px;
             padding: 14px 16px;
             min-height: 48px;
-            color: #E8E6E1;
+            color: #1A1A1A;
             font-family: 'Outfit', sans-serif;
             font-size: 15px;
             width: 100%;
@@ -400,11 +400,11 @@
 
         .form-input:focus {
             outline: none;
-            border-color: #D4622B;
+            border-color: #CC5833;
         }
 
         .form-input::placeholder {
-            color: #4A4A45;
+            color: #8A8A8A;
         }
 
         /* Scroll indicator bounce */
@@ -423,21 +423,22 @@
         /* Check / X list markers */
         .list-check li::before {
             content: '→';
-            color: #D4622B;
+            color: #2E4036;
+            /* Moss */
             font-weight: 700;
             margin-right: 12px;
         }
 
         .list-x li::before {
             content: '✕';
-            color: #4A4A45;
+            color: #8A8A8A;
             font-weight: 700;
             margin-right: 12px;
         }
     </style>
 </head>
 
-<body class="bg-brand-bg text-brand-text font-body antialiased">
+<body class="bg-brand-bg text-brand-text font-body antialiased selection:bg-brand-accent selection:text-white">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
@@ -453,11 +454,11 @@
 
             <div class="flex items-center gap-4 z-50 relative">
                 <a href="#contact"
-                    class="hidden sm:inline-block text-sm font-body font-semibold bg-brand-accent text-white px-5 py-2.5 rounded-lg hover:bg-brand-accent-hover btn-primary transition-all">
+                    class="hidden sm:inline-block text-sm font-body font-semibold bg-brand-primary text-white hover:bg-opacity-90 px-5 py-2.5 rounded-lg btn-primary transition-all">
                     Show Me the Signal
                 </a>
                 <a href="#contact"
-                    class="sm:hidden text-xs font-body font-semibold bg-brand-accent text-white px-4 py-2 rounded-lg hover:bg-brand-accent-hover btn-primary transition-all">
+                    class="sm:hidden text-xs font-body font-semibold bg-brand-primary text-white hover:bg-opacity-90 px-4 py-2 rounded-lg btn-primary transition-all">
                     Get Signal
                 </a>
             </div>
