@@ -858,18 +858,20 @@
             rootMargin: '0px 0px -15px 0px'
         });
 
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        // Hero reveals — activate immediately with stagger (always visible on load)
+        const heroSection = document.querySelector('main > section:first-child');
+        heroSection.querySelectorAll('.reveal').forEach((el, i) => {
+            setTimeout(() => {
+                el.classList.add('active');
+            }, i * 150);
+        });
 
-        // Fallback: force-activate any reveals the observer missed (mobile Safari edge cases)
-        setTimeout(() => {
-            document.querySelectorAll('.reveal:not(.active)').forEach(el => {
-                const rect = el.getBoundingClientRect();
-                if (rect.top < window.innerHeight + 50 && rect.bottom > -50) {
-                    el.classList.add('active');
-                    observer.unobserve(el);
-                }
-            });
-        }, 1200);
+        // Everything else — use observer for scroll reveal
+        document.querySelectorAll('.reveal').forEach(el => {
+            if (!heroSection.contains(el)) {
+                observer.observe(el);
+            }
+        });
 
         // Form submission with success state
         const form = document.getElementById('contact-form');
