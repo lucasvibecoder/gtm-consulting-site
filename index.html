@@ -168,7 +168,7 @@
                         <span class="inline-block w-2 h-2 bg-brand-accent" style="animation: blink-cursor 2s step-end infinite;"></span>
                         <span class="font-mono text-xs text-brand-accent tracking-wider">SIGNAL_FEED // LIVE</span>
                     </div>
-                    <div id="signal-monitor-feed" class="space-y-0"></div>
+                    <div id="signal-monitor-feed" class="overflow-hidden" style="height: 234px;"></div>
                 </div>
             </div>
         </section>
@@ -667,19 +667,28 @@
             'ELEVATOR_CERT :: One Liberty :: DOB-ELEV-2026 :: Expired',
             'LEAD_PAINT :: Harborview Apts :: EPA-RRP-2026 :: Disclosure Fail'
         ];
+        var maxLines = 12;
         var idx = 0;
+        function makeLine(i) {
+            var el = document.createElement('div');
+            var m = i % 3 === 2;
+            el.style.cssText = 'font-family:"JetBrains Mono",monospace;font-size:12px;line-height:1.625;padding:4px 0;color:' + (m ? '#D4622B' : '#4D5562') + ';';
+            el.textContent = (m ? '[MATCH] ' : '[SCAN]  ') + data[i % data.length];
+            return el;
+        }
+        // Pre-fill so container never grows
+        for (var i = 0; i < maxLines; i++) {
+            feed.appendChild(makeLine(i));
+        }
+        idx = maxLines;
         function tick() {
             if (document.hidden) { setTimeout(tick, 1000); return; }
-            var el = document.createElement('div');
-            var m = idx % 3 === 2;
-            el.style.cssText = 'font-family:"JetBrains Mono",monospace;font-size:12px;line-height:1.625;padding:4px 0;color:' + (m ? '#D4622B' : '#4D5562') + ';';
-            el.textContent = (m ? '[MATCH] ' : '[SCAN]  ') + data[idx % data.length];
-            feed.appendChild(el);
-            while (feed.children.length > 12) feed.removeChild(feed.firstChild);
+            feed.removeChild(feed.firstChild);
+            feed.appendChild(makeLine(idx));
             idx++;
             setTimeout(tick, 2200);
         }
-        setTimeout(tick, 800);
+        setTimeout(tick, 2200);
     })();
     </script>
 
